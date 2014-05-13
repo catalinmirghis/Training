@@ -20,7 +20,7 @@ import com.steps.MyFreeDaysSteps;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
-public class LogInTest {
+public class MyFreeDaysTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -34,15 +34,12 @@ public class LogInTest {
 	@Steps
 	public MyFreeDaysSteps myFreeDays; 
 	
-	@Steps
-	public FreeDaysHistorySteps freeDaysHistory; 
-
 	@Issue("#WIKI-1")
 	@Test
 	public void login_successfully() {
 		endUser.loginSteps("evoportal.dmunu", "monkey");
 		endUser.goNewVacation();
 	    myFreeDays.clickMyFreeDays();
-//		freeDaysHistory.clickFreeDaysHistory();
+
 	}
 }

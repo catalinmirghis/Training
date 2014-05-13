@@ -15,12 +15,13 @@ import org.openqa.selenium.WebDriver;
 
 import com.requirements.Application;
 import com.steps.FreeDaysHistorySteps;
+import com.steps.InboxSteps;
 import com.steps.LogInSteps;
 import com.steps.MyFreeDaysSteps;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
-public class LogInTest {
+public class InboxTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -32,17 +33,15 @@ public class LogInTest {
 	public LogInSteps endUser; 
 	
 	@Steps
-	public MyFreeDaysSteps myFreeDays; 
+	public InboxSteps inboxStep;
 	
-	@Steps
-	public FreeDaysHistorySteps freeDaysHistory; 
-
+	
 	@Issue("#WIKI-1")
 	@Test
 	public void login_successfully() {
 		endUser.loginSteps("evoportal.dmunu", "monkey");
 		endUser.goNewVacation();
-	    myFreeDays.clickMyFreeDays();
-//		freeDaysHistory.clickFreeDaysHistory();
+		inboxStep.clickInbox();
+
 	}
 }
