@@ -4,11 +4,13 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import com.pages.HomePage;
 import com.pages.LogInPage;
 
 public class LogInSteps extends ScenarioSteps {
 
 	LogInPage loginPage;
+	HomePage homePage;
 
 	@Step
 	public void enterScreenName(String keyword) {
@@ -36,6 +38,17 @@ public class LogInSteps extends ScenarioSteps {
 	public void verifyIfYouAreLoginIn() {
 		loginPage.verifyThatYouAreLogIn();
 	}
+	
+	@Step
+	public void goNewVacation(){
+		homePage.click_SignIn();
+	}
+	
+	@Step
+	public void verifyNewVacationPage(){
+		homePage.verifyThatYouAreOnNewVacationPage();
+	}
+	
 
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
@@ -44,6 +57,9 @@ public class LogInSteps extends ScenarioSteps {
 		enterPassword(Password);
 		signButton();
 		verifyIfYouAreLoginIn();
+		goNewVacation();
+		verifyNewVacationPage();
+		
 
 	}
 }
