@@ -32,9 +32,10 @@ public class LogInPage extends PageObject {
 	public void click_SignIn() {
 		SignIn.click();
 	}
-	
-	public void verifyThatYouAreLogIn(){
-		WebElement dockBar = getDriver().findElement(By.cssSelector("#dockbar"));
+
+	public void verifyThatYouAreLogIn() {
+		WebElement dockBar = getDriver()
+				.findElement(By.cssSelector("#dockbar"));
 		Assert.assertTrue("You are not logged in!", dockBar.isDisplayed());
 	}
 
