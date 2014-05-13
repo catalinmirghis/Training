@@ -38,17 +38,16 @@ public class LogInSteps extends ScenarioSteps {
 	public void verifyIfYouAreLoginIn() {
 		loginPage.verifyThatYouAreLogIn();
 	}
-	
+
 	@Step
-	public void goNewVacation(){
+	public void goNewVacation() {
 		homePage.click_SignIn();
 	}
-	
+
 	@Step
-	public void verifyNewVacationPage(){
+	public void verifyNewVacationPage() {
 		homePage.verifyThatYouAreOnNewVacationPage();
 	}
-	
 
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
@@ -59,7 +58,6 @@ public class LogInSteps extends ScenarioSteps {
 		verifyIfYouAreLoginIn();
 		goNewVacation();
 		verifyNewVacationPage();
-		
 
 	}
 }
