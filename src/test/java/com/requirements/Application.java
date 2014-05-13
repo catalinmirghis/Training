@@ -6,6 +6,6 @@ public class Application {
     @Feature
     public class Search {
         public class SearchByKeyword {}
-        public class SearchByMultipleKeywords {} //comment2
+        public class SearchByMultipleKeywords {} //comment3
     }
 }
