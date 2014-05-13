@@ -14,10 +14,11 @@ import org.openqa.selenium.WebDriver;
 import com.requirements.Application;
 import com.steps.HomeSteps;
 import com.steps.LogInSteps;
+import com.steps.NewVacationRequestSteps;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
-public class LogInTest {
+public class NewVacationRequestTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -29,11 +30,20 @@ public class LogInTest {
 	public LogInSteps endUser;
 	@Steps
 	public HomeSteps homeSteps;
+	@Steps
+	public NewVacationRequestSteps newRequest;
 
 	@Test
 	public void login_successfully() {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
+		newRequest.click_signin_newrequest();
+		newRequest.selectavacation("Sick leave");
+		newRequest.click_comment();
+		newRequest.enter_a_comment("aaaa");
+		newRequest.click_input_Startdate();
+		newRequest.click_input_Enddate();
+		newRequest.click_buttonsave();
 	}
 }

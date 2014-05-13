@@ -11,17 +11,17 @@ import org.openqa.selenium.WebElement;
 
 @DefaultUrl("http://192.168.1.68:9080/web/java-department")
 public class HomePage extends PageObject {
-
+	
 	@FindBy(css = "ul[class='main-menu'] a[href='http://192.168.1.68:9080/web/java-department/new-vacation']")
-	private WebElementFacade NewVacation;
+	private WebElementFacade newVacation;
 
-	public void click_SignIn() {
-		NewVacation.click();
+	public void clickNewVacationMenu() {
+		newVacation.click();
 	}
 
 	public void verifyThatYouAreOnNewVacationPage() {
 		WebElement vacation = getDriver().findElement(
-				By.cssSelector("li[class='nav-header']"));
+				By.cssSelector("li[class='nav-header']:nth-child(1)"));
 		Assert.assertTrue("You are not logged in!", vacation.isDisplayed());
 	}
 
