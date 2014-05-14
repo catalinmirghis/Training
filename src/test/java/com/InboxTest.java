@@ -38,12 +38,29 @@ public class InboxTest {
 	@Steps
 	public InboxSteps assignedToOthers;
 
+	@Steps
+	public InboxSteps checkAll;
+
+	@Steps
+	public InboxSteps approveAll;
+
 	@Issue("#WIKI-1")
+//	@Test
+//	public void login_successfully() {
+//		endUser.loginSteps("evoportal.dmunu", "monkey");
+//		endUser.goNewVacation();
+//		inboxStep.clickInbox();
+//		assignedToOthers.clickAssignedToOthers();
+//		checkAll.clickCheckAll();
+//		approveAll.clickApproveAll();
+//	}
+
 	@Test
-	public void login_successfully() {
-		endUser.loginSteps("evoportal.dmunu", "monkey");
+	public void click_On_Employee_Link() {
+		endUser.loginSteps("evoportal.pmunu", "monkey");
 		endUser.goNewVacation();
 		inboxStep.clickInbox();
-		assignedToOthers.clickAssignedToOthers();
+		inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
 	}
 }
+// }

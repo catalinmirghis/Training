@@ -23,11 +23,11 @@ import com.steps.NewVacationRequestSteps;
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
 public class MyRequestsTest {
-	
+
 	@Before
-	public void SetUp(){
+	public void SetUp() {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		
+
 		webdriver = new ChromeDriver();
 	}
 
@@ -36,13 +36,13 @@ public class MyRequestsTest {
 
 	@ManagedPages(defaultUrl = "http://192.168.1.68:9080/")
 	public Pages pages;
-	
+
 	@Steps
 	public LogInSteps endUser;
 
 	@Steps
 	public MyRequestsSteps myRequestsSteps;
-	
+
 	@Steps
 	public NewVacationRequestSteps newRequest;
 
@@ -51,21 +51,23 @@ public class MyRequestsTest {
 	public void filter_MyRequests() throws Exception {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		endUser.goNewVacation();
-		
+			
+		myRequestsSteps.myReqests_Filter_Apply("Holiday");
+
 		newRequest.click_signin_newrequest();
 		newRequest.enterStartDate(8, 28, 2013);
-		newRequest.selectavacation("Sick leave");
+		newRequest.selectAVacation("Sick leave", "aaa", "bbb", "Funeral", "a");
 		newRequest.click_comment();
 		newRequest.enter_a_comment("aaaa");
 		newRequest.enterEndDate(9, 20, 2013);
 		newRequest.click_buttonsave();
-		
+
 		myRequestsSteps.myReqests_Filter_Apply("Holiday");
 
 	}
-	
+
 	@After
-	public void tearDown(){
+	public void tearDown() {
 		webdriver.quit();
 	}
 }
