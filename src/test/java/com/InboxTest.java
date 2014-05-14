@@ -38,6 +38,9 @@ public class InboxTest {
 	@Steps
 	public InboxSteps assignedToOthers;
 
+	@Steps
+	public InboxSteps checkAll;
+
 	@Issue("#WIKI-1")
 	@Test
 	public void login_successfully() {
@@ -45,5 +48,6 @@ public class InboxTest {
 		endUser.goNewVacation();
 		inboxStep.clickInbox();
 		assignedToOthers.clickAssignedToOthers();
+		checkAll.clickCheckAll();
 	}
 }

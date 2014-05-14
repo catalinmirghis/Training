@@ -65,6 +65,11 @@ public class InboxSteps extends ScenarioSteps {
 		inboxPage.click_assignedToOthers();
 	}
 
+	@Step
+	public void clickCheckAll() {
+		inboxPage.click_checkAll();
+	}
+
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -76,6 +81,7 @@ public class InboxSteps extends ScenarioSteps {
 		verifyNewVacationPage();
 		clickInbox();
 		clickAssignedToOthers();
+		clickCheckAll();
 
 	}
 }

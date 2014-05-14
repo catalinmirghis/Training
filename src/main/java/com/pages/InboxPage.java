@@ -15,8 +15,11 @@ public class InboxPage extends PageObject {
 	@FindBy(css = ".nav-list a[href*='menuItem=inbox']")
 	private WebElementFacade Inbox;
 
-	@FindBy(css = "li[class='active'] a")
+	@FindBy(css = "ul[class='nav nav-tabs'] li:nth-child(2) a")
 	private WebElementFacade AssignedToOthers;
+
+	@FindBy(name = "_evovacation_WAR_EvoVacationportlet_allRowIds")
+	private WebElementFacade CheckAll;
 
 	public void click_inbox() {
 		Inbox.click();
@@ -24,6 +27,11 @@ public class InboxPage extends PageObject {
 
 	public void click_assignedToOthers() {
 		AssignedToOthers.click();
+		AssignedToOthers.click();
+	}
+
+	public void click_checkAll() {
+		CheckAll.click();
 	}
 
 	public void verifyThatYouAreLogIn() {
