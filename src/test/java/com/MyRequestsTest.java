@@ -36,8 +36,12 @@ public class MyRequestsTest {
 	@Test
 	public void filter_MyRequests() {
 		endUser.loginSteps("daniel.mocan", "monkey");
+		endUser.goNewVacation();
 		myRequestsSteps.click_MyRequestPage();
 		myRequestsSteps.verifyMyRequestsPage();
 		myRequestsSteps.selectAFilterType("Holiday");
+		// myRequestsSteps.selectAFilterType("Holiday");
+		myRequestsSteps.click_Apply_Button();
+
 	}
 }

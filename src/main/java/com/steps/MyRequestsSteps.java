@@ -14,6 +14,7 @@ import com.pages.MyRequestsPage;
 
 public class MyRequestsSteps extends ScenarioSteps {
 
+	public String var;
 	MyRequestsPage myrequestspage;
 
 	@Step
@@ -22,56 +23,48 @@ public class MyRequestsSteps extends ScenarioSteps {
 	}
 
 	@Step
+	public void click_Apply_Button() {
+		myrequestspage.click_Apply_Button();
+	}
+
+	@Step
 	public void verifyMyRequestsPage() {
 		myrequestspage.verifyThatYouAreOnMyRequestsPage();
 	}
 
 	@Step
-	 public void selectAFilterType(String vacationType) {
-		  String var;
-		  switch(vacationType){
-		  case "Holiday": var = "HOLIDAYCheckbox";
-		  case "Vacation without payment" : var = "VACATION_WITHOUT_PAYMENTCheckbox";
-		  case "Special vacation" : var = "SPECIAL_VACATIONCheckbox"; 
-		  case "Sick leave" : var = "SICK_LEAVE";
-		  case "Show only future vacations" : var = "futureVacationsCheckbox";
-		  //System.out.println(vacationType);
-		  System.out.println(vacationType);
-		  WebElement element = getDriver().findElement(By.cssSelector(String.format("_evovacation_WAR_EvoVacationportlet_"+ var)));
-		  if (element.getAttribute("value").toString().toLowerCase()
-			.contains(vacationType.toLowerCase()))
-			  System.out.println(element);
-		  if(!(element.isSelected()))
-			  System.out.println(vacationType);
-		   element.click();
-		  break;
-		  }
+	public void selectAFilterType(String vacationType) {
+		switch (vacationType) {
+		case "Holiday":
+			var = "HOLIDAYCheckbox";
+			break;
+		case "Vacation Without Payment":
+			var = "VACATION_WITHOUT_PAYMENTCheckbox";
+			break;
+		case "Special Vacation":
+			var = "SPECIAL_VACATIONCheckbox";
+			break;
+		case "Sick Leave":
+			var = "SICK_LEAVECheckbox";
+			break;
+		case "Show only future vacations":
+			var = "futureVacationsCheckbox";
+		}
+		WebElement element = getDriver()
+				.findElement(
+						By.cssSelector(String
+								.format("#_evovacation_WAR_EvoVacationportlet_"
+										+ var)));
+		if (!(element.isSelected()))
+			element.click();
+
 	}
-//	public void selectAFilterType(String vacationType) {
-//		boolean found = false;
-//		List<WebElement> elements = getDriver().findElements(
-//				By.cssSelector("span[class='aui-field-content'] label[class='aui-choice-label']"));
-//		for (WebElement element : elements) {
-//			System.out.println(element);
-//			if (element.getAttribute("value").toString().toLowerCase()
-//					.contains(vacationType.toLowerCase()))
-//				System.out.println(element);
-//			if (!(element.isSelected()))
-//				element.findElement(
-//						By.cssSelector("span[class='aui-field-element aui-field-label-right'] input[id='_evovacation_WAR_EvoVacationportlet_futureVacationsCheckbox']"))
-//						.click();
-//			found = true;
-//		}
-//
-//		Assert.assertTrue("The vacation type was not founded", found);
-//
-//	}
-
-	// @StepGroup
-	// public void myReqests_Filter(){
-	// click_MyRequestPage();
-	// verifyMyRequestsPage();
-	// selectAVacationType("dads");
-	// }
-
 }
+
+// @StepGroup
+// public void myReqests_Filter(){
+// click_MyRequestPage();
+// verifyMyRequestsPage();
+// selectAVacationType("dads");
+//
+
