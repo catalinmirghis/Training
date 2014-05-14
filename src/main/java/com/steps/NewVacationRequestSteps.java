@@ -81,13 +81,15 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	     newVacationRequest.click_a_special_vacation(value);   
 	     Thread.sleep(4000);
 	 }
-	
+	@Step
+	public void checkErrorMessage(String message)
+	{newVacationRequest.checkThatYouReceiveTheErrorMessage(message);
+	}
 	
 	@StepGroup
 	public void makeANewVacation(String vacationType, String keywordDomain, String KeywordInstitution, int startdMonth, int startDay, int startYear,int endDay,int endMonth,int endYear,String keyword,String value,String com) throws Exception{
 		click_signin_newrequest();
 		selectAVacation(vacationType, keywordDomain, KeywordInstitution,value,com);
-		
 		enterStartDate(startdMonth, startDay, startYear);
 		enterEndDate(endMonth, endDay, endYear);
 		click_comment();

@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -136,5 +137,16 @@ public class NewVacationRequestPage extends PageObject {
 	public void click_Cancel() {
 		CancelButton.click();
 	}
+	public void checkThatYouReceiveTheErrorMessage(String message) {
+		  String elementText = getDriver()
+		    .findElement(
+		      By.cssSelector(".portlet-body >.portlet-msg-error"))
+		      .getText().trim();
+		  if (!elementText.toLowerCase().contains(message.toLowerCase())) {
+		   Assert.fail(String.format("Thef containerf does not contain message!",
+		     message));
+		   System.out.println(message);
+		  }
+		 }
 
 }

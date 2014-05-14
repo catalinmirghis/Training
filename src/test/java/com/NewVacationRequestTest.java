@@ -48,7 +48,8 @@ public class NewVacationRequestTest {
 		//newRequest.click_comment();
 		//newRequest.enter_a_comment("aaaa");
 		newRequest.enterEndDate(9, 20, 2013);
-		newRequest.click_buttonsave();		
+		newRequest.click_buttonsave();	
+		newRequest.checkErrorMessage("Your request failed to complete.");
 		//newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 8, 28, 2013, 20, 9, 2013, "fff","Funeral");
 		//newRequest.click_dropDown("Funeral");}
 	}
