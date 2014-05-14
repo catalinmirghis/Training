@@ -30,18 +30,20 @@ public class InboxTest {
 	public Pages pages;
 
 	@Steps
-	public LogInSteps endUser; 
-	
+	public LogInSteps endUser;
+
 	@Steps
 	public InboxSteps inboxStep;
-	
-	
+
+	@Steps
+	public InboxSteps assignedToOthers;
+
 	@Issue("#WIKI-1")
 	@Test
 	public void login_successfully() {
 		endUser.loginSteps("evoportal.dmunu", "monkey");
 		endUser.goNewVacation();
 		inboxStep.clickInbox();
-
+		assignedToOthers.clickAssignedToOthers();
 	}
 }

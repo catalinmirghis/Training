@@ -15,8 +15,15 @@ public class InboxPage extends PageObject {
 	@FindBy(css = ".nav-list a[href*='menuItem=inbox']")
 	private WebElementFacade Inbox;
 
+	@FindBy(css = "li[class='active'] a")
+	private WebElementFacade AssignedToOthers;
+
 	public void click_inbox() {
 		Inbox.click();
+	}
+
+	public void click_assignedToOthers() {
+		AssignedToOthers.click();
 	}
 
 	public void verifyThatYouAreLogIn() {
