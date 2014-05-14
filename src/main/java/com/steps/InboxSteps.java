@@ -5,13 +5,18 @@ import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import com.pages.HomePage;
+import com.pages.InboxPage;
 import com.pages.LogInPage;
 
-public class LogInSteps extends ScenarioSteps {
+public class InboxSteps extends ScenarioSteps {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	LogInPage loginPage;
 	HomePage homePage;
-	
+	InboxPage inboxPage;
 
 	@Step
 	public void enterScreenName(String keyword) {
@@ -41,16 +46,21 @@ public class LogInSteps extends ScenarioSteps {
 	}
 
 	@Step
-	 public void goNewVacation() {
-	  homePage.clickNewVacationMenu() ;
-	 }
+	public void goNewVacation() {
+		loginPage.click_SignIn();
+	}
 
-	 @Step
-	 public void verifyNewVacationPage() {
-	  homePage.verifyThatYouAreOnNewVacationPage();
-	 }
-
-
+	@Step
+	public void verifyNewVacationPage() {
+		homePage.verifyThatYouAreOnNewVacationPage();
+	}
+	
+	@Step
+	public void clickInbox (){
+		inboxPage.click_inbox();
+	}
+	
+	
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -58,5 +68,9 @@ public class LogInSteps extends ScenarioSteps {
 		enterPassword(Password);
 		signButton();
 		verifyIfYouAreLoginIn();
-		}
+		goNewVacation();
+		verifyNewVacationPage();
+		clickInbox();
+
+	}
 }

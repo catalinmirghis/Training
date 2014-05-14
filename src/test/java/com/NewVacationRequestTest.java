@@ -12,14 +12,13 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import com.requirements.Application;
-import com.steps.FreeDaysHistorySteps;
 import com.steps.HomeSteps;
 import com.steps.LogInSteps;
-import com.steps.MyFreeDaysSteps;
+import com.steps.NewVacationRequestSteps;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
-public class LogInTest {
+public class NewVacationRequestTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -32,19 +31,23 @@ public class LogInTest {
 	@Steps
 	public HomeSteps homeSteps;
 	@Steps
-	public MyFreeDaysSteps myFreeDays; 
-	
-	@Steps
-	public FreeDaysHistorySteps freeDaysHistory; 
+	public NewVacationRequestSteps newRequest;
 
 	@Test
 	public void login_successfully() {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		endUser.loginSteps("evoportal.dmunu", "monkey");
-		endUser.goNewVacation();
-	    myFreeDays.clickMyFreeDays();
-//		freeDaysHistory.clickFreeDaysHistory();
+		/*newRequest.click_signin_newrequest();
+		newRequest.selectavacation("Sick leave");
+		newRequest.click_comment();
+		newRequest.enter_a_comment("aaaa");
+		newRequest.click_input_Startdate();
+		newRequest.click_input_Enddate();
+		newRequest.click_buttonsave();*/
+	}
+	@Test
+	public void new_request_successfully(){
+		newRequest.newRequestSteps( "Sick leave","aaa");
 	}
 }

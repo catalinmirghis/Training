@@ -6,12 +6,13 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import com.pages.HomePage;
 import com.pages.LogInPage;
+import com.pages.MyFreeDaysPage;
 
-public class LogInSteps extends ScenarioSteps {
-	private static final long serialVersionUID = 1L;
+public class MyFreeDaysSteps extends ScenarioSteps {
+
 	LogInPage loginPage;
 	HomePage homePage;
-	
+	MyFreeDaysPage freeDayPage;
 
 	@Step
 	public void enterScreenName(String keyword) {
@@ -41,16 +42,21 @@ public class LogInSteps extends ScenarioSteps {
 	}
 
 	@Step
-	 public void goNewVacation() {
-	  homePage.clickNewVacationMenu() ;
-	 }
+	public void clickOnSignIn() {
+		loginPage.click_SignIn();
+	}
 
-	 @Step
-	 public void verifyNewVacationPage() {
-	  homePage.verifyThatYouAreOnNewVacationPage();
-	 }
-
-
+	@Step
+	public void verifyNewVacationPage() {
+		homePage.verifyThatYouAreOnNewVacationPage();
+	}
+	
+	@Step
+	public void clickMyFreeDays (){
+		freeDayPage.click_freeDays();
+	}
+	
+	
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -58,5 +64,9 @@ public class LogInSteps extends ScenarioSteps {
 		enterPassword(Password);
 		signButton();
 		verifyIfYouAreLoginIn();
-		}
+		clickOnSignIn();
+		verifyNewVacationPage();
+		clickMyFreeDays();
+
+	}
 }

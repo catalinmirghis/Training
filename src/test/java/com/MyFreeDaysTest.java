@@ -1,7 +1,9 @@
 package com;
 
+import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 import net.thucydides.core.pages.Pages;
@@ -13,13 +15,12 @@ import org.openqa.selenium.WebDriver;
 
 import com.requirements.Application;
 import com.steps.FreeDaysHistorySteps;
-import com.steps.HomeSteps;
 import com.steps.LogInSteps;
 import com.steps.MyFreeDaysSteps;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
-public class LogInTest {
+public class MyFreeDaysTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -28,23 +29,17 @@ public class LogInTest {
 	public Pages pages;
 
 	@Steps
-	public LogInSteps endUser;
-	@Steps
-	public HomeSteps homeSteps;
+	public LogInSteps endUser; 
+	
 	@Steps
 	public MyFreeDaysSteps myFreeDays; 
 	
-	@Steps
-	public FreeDaysHistorySteps freeDaysHistory; 
-
+	@Issue("#WIKI-1")
 	@Test
 	public void login_successfully() {
-		endUser.loginSteps("daniel.mocan", "monkey");
-		homeSteps.goNewVacation();
-		homeSteps.verifyNewVacationPage();
 		endUser.loginSteps("evoportal.dmunu", "monkey");
 		endUser.goNewVacation();
 	    myFreeDays.clickMyFreeDays();
-//		freeDaysHistory.clickFreeDaysHistory();
+
 	}
 }

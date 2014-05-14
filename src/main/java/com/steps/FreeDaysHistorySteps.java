@@ -4,14 +4,17 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import com.pages.FreeDaysHistoryPage;
 import com.pages.HomePage;
 import com.pages.LogInPage;
+import com.pages.MyFreeDaysPage;
 
-public class LogInSteps extends ScenarioSteps {
-	private static final long serialVersionUID = 1L;
+public class FreeDaysHistorySteps extends ScenarioSteps {
+
 	LogInPage loginPage;
 	HomePage homePage;
-	
+//	MyFreeDaysPage freeDayPage;
+	FreeDaysHistoryPage freeDayHistoryPage;
 
 	@Step
 	public void enterScreenName(String keyword) {
@@ -41,16 +44,36 @@ public class LogInSteps extends ScenarioSteps {
 	}
 
 	@Step
-	 public void goNewVacation() {
-	  homePage.clickNewVacationMenu() ;
-	 }
+	public void goNewVacation() {
+		loginPage.click_SignIn();
+	}
 
-	 @Step
-	 public void verifyNewVacationPage() {
-	  homePage.verifyThatYouAreOnNewVacationPage();
-	 }
-
-
+	@Step
+	public void verifyNewVacationPage() {
+		homePage.verifyThatYouAreOnNewVacationPage();
+	}
+	
+	@Step
+	public void clickFreeDaysHistory (){
+		freeDayHistoryPage.click_freeDaysHistory();
+	}
+	
+	@Step
+	public void click_anniversaryCheckbox(){
+		freeDayHistoryPage.click_anniversaryCheckbox();
+	}
+	
+	@Step
+	public void click_applyButton(){
+		freeDayHistoryPage.click_applyButton();
+	}
+	
+//	@Step
+//	public void clickMyFreeDays (){
+//		freeDayPage.click_freeDays();
+//	}
+//	
+	
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -58,5 +81,10 @@ public class LogInSteps extends ScenarioSteps {
 		enterPassword(Password);
 		signButton();
 		verifyIfYouAreLoginIn();
-		}
+		goNewVacation();
+		verifyNewVacationPage();
+//		clickMyFreeDays();
+		clickFreeDaysHistory();
+
+	}
 }
