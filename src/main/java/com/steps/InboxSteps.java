@@ -7,10 +7,13 @@ import net.thucydides.core.steps.ScenarioSteps;
 import com.pages.HomePage;
 import com.pages.InboxPage;
 import com.pages.LogInPage;
-import com.pages.MyFreeDaysPage;
 
 public class InboxSteps extends ScenarioSteps {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	LogInPage loginPage;
 	HomePage homePage;
 	InboxPage inboxPage;
@@ -44,7 +47,7 @@ public class InboxSteps extends ScenarioSteps {
 
 	@Step
 	public void goNewVacation() {
-		homePage.click_SignIn();
+		loginPage.click_SignIn();
 	}
 
 	@Step

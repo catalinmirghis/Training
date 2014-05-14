@@ -42,8 +42,8 @@ public class MyFreeDaysSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void goNewVacation() {
-		homePage.click_SignIn();
+	public void clickOnSignIn() {
+		loginPage.click_SignIn();
 	}
 
 	@Step
@@ -64,7 +64,7 @@ public class MyFreeDaysSteps extends ScenarioSteps {
 		enterPassword(Password);
 		signButton();
 		verifyIfYouAreLoginIn();
-		goNewVacation();
+		clickOnSignIn();
 		verifyNewVacationPage();
 		clickMyFreeDays();
 

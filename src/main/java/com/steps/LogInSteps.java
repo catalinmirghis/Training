@@ -8,9 +8,10 @@ import com.pages.HomePage;
 import com.pages.LogInPage;
 
 public class LogInSteps extends ScenarioSteps {
-
+	private static final long serialVersionUID = 1L;
 	LogInPage loginPage;
 	HomePage homePage;
+	
 
 	@Step
 	public void enterScreenName(String keyword) {
@@ -40,14 +41,15 @@ public class LogInSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void goNewVacation() {
-		homePage.click_SignIn();
-	}
+	 public void goNewVacation() {
+	  homePage.clickNewVacationMenu() ;
+	 }
 
-	@Step
-	public void verifyNewVacationPage() {
-		homePage.verifyThatYouAreOnNewVacationPage();
-	}
+	 @Step
+	 public void verifyNewVacationPage() {
+	  homePage.verifyThatYouAreOnNewVacationPage();
+	 }
+
 
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
@@ -56,8 +58,5 @@ public class LogInSteps extends ScenarioSteps {
 		enterPassword(Password);
 		signButton();
 		verifyIfYouAreLoginIn();
-		goNewVacation();
-		verifyNewVacationPage();
-
-	}
+		}
 }

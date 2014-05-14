@@ -1,5 +1,6 @@
 package com;
 
+import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
@@ -12,14 +13,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import com.requirements.Application;
-import com.steps.FreeDaysHistorySteps;
-import com.steps.HomeSteps;
 import com.steps.LogInSteps;
-import com.steps.MyFreeDaysSteps;
+import com.steps.MyRequestsSteps;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
-public class LogInTest {
+public class MyRequestsTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -29,22 +28,16 @@ public class LogInTest {
 
 	@Steps
 	public LogInSteps endUser;
-	@Steps
-	public HomeSteps homeSteps;
-	@Steps
-	public MyFreeDaysSteps myFreeDays; 
-	
-	@Steps
-	public FreeDaysHistorySteps freeDaysHistory; 
 
+	@Steps
+	public MyRequestsSteps myRequestsSteps;
+
+	@Issue("#WIKI-1")
 	@Test
-	public void login_successfully() {
+	public void filter_MyRequests() {
 		endUser.loginSteps("daniel.mocan", "monkey");
-		homeSteps.goNewVacation();
-		homeSteps.verifyNewVacationPage();
-		endUser.loginSteps("evoportal.dmunu", "monkey");
-		endUser.goNewVacation();
-	    myFreeDays.clickMyFreeDays();
-//		freeDaysHistory.clickFreeDaysHistory();
+		myRequestsSteps.click_MyRequestPage();
+		myRequestsSteps.verifyMyRequestsPage();
+		myRequestsSteps.selectAFilterType("Holiday");
 	}
 }

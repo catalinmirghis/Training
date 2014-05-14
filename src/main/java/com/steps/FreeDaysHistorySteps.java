@@ -45,7 +45,7 @@ public class FreeDaysHistorySteps extends ScenarioSteps {
 
 	@Step
 	public void goNewVacation() {
-		homePage.click_SignIn();
+		loginPage.click_SignIn();
 	}
 
 	@Step
