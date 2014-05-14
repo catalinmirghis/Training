@@ -54,13 +54,17 @@ public class InboxSteps extends ScenarioSteps {
 	public void verifyNewVacationPage() {
 		homePage.verifyThatYouAreOnNewVacationPage();
 	}
-	
+
 	@Step
-	public void clickInbox (){
+	public void clickInbox() {
 		inboxPage.click_inbox();
 	}
-	
-	
+
+	@Step
+	public void clickAssignedToOthers() {
+		inboxPage.click_assignedToOthers();
+	}
+
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -71,6 +75,7 @@ public class InboxSteps extends ScenarioSteps {
 		goNewVacation();
 		verifyNewVacationPage();
 		clickInbox();
+		clickAssignedToOthers();
 
 	}
 }

@@ -26,59 +26,67 @@ public class NewVacationRequestPage extends PageObject {
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_endDate")
 	private WebElementFacade EndDate;
-	
-	@FindBy(id="_evovacation_WAR_EvoVacationportlet_newVacationComment")
+
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_newVacationComment")
 	private WebElementFacade Comment;
-	
-	@FindBy(id="_evovacation_WAR_EvoVacationportlet_commentContent")
+
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_commentContent")
 	private WebElementFacade InputComment;
-	
-	@FindBy(id="_evovacation_WAR_EvoVacationportlet_saveButton")
+
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_saveButton")
 	private WebElementFacade SaveButton;
-	
-	@FindBy(id="_evovacation_WAR_EvoVacationportlet_cancelButton")
+
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_cancelButton")
 	private WebElementFacade CancelButton;
 
 	public void click_SignIn() {
 		element(NewVacationRequest).click();
 	}
 
-	
 	public void click_input_startdate() {
 		StartDate.click();
 	}
-	public void click_input_enddate(){
+
+	public void click_input_enddate() {
 		EndDate.click();
 	}
 
 	public void selectAVacationType(String vacationType) {
 		String var;
-		switch(vacationType){
-		case "Holiday": var = "CO";
-		case "Vacation without payment" : var = "CF";
-		case "Special vacation" : var = "CS"; 
-		case "Sick leave" : var = "CM";
-		WebElement element = getDriver().findElement(By.cssSelector(String.format("#_evovacation_WAR_EvoVacationportlet_type_"+ var)));
-		if(!(element.isSelected()))
-			element.click();
-		break;
+		switch (vacationType) {
+		case "Holiday":
+			var = "CO";
+		case "Vacation without payment":
+			var = "CF";
+		case "Special vacation":
+			var = "CS";
+		case "Sick leave":
+			var = "CM";
+			WebElement element = getDriver()
+					.findElement(
+							By.cssSelector(String
+									.format("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var)));
+			if (!(element.isSelected()))
+				element.click();
+			break;
 		}
-		}
-	
-	
-	public void Click_comment()
-	{Comment.click();
 	}
-	
-	public void enter_comment(String keyword){
+
+	public void Click_comment() {
+		Comment.click();
+	}
+
+	public void enter_comment(String keyword) {
 		InputComment.type(keyword);
 	}
-	
-	public void click_Save(){
+
+	public void click_Save() {
 		SaveButton.click();
 	}
-	public void click_Cancel(){
+
+	public void click_Cancel() {
 		CancelButton.click();
 	}
-	
+
 }
