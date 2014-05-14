@@ -38,12 +38,16 @@ public class NewVacationRequestTest {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		newRequest.click_signin_newrequest();
+		/*newRequest.click_signin_newrequest();
 		newRequest.selectavacation("Sick leave");
 		newRequest.click_comment();
 		newRequest.enter_a_comment("aaaa");
 		newRequest.click_input_Startdate();
 		newRequest.click_input_Enddate();
-		newRequest.click_buttonsave();
+		newRequest.click_buttonsave();*/
+	}
+	@Test
+	public void new_request_successfully(){
+		newRequest.newRequestSteps( "Sick leave","aaa");
 	}
 }

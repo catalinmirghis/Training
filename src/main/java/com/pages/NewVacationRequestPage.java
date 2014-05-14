@@ -58,7 +58,9 @@ public class NewVacationRequestPage extends PageObject {
 		case "Vacation without payment" : var = "CF";
 		case "Special vacation" : var = "CS"; 
 		case "Sick leave" : var = "CM";
-		getDriver().findElement(By.cssSelector(String.format("#_evovacation_WAR_EvoVacationportlet_type_"+ var))).click();
+		WebElement element = getDriver().findElement(By.cssSelector(String.format("#_evovacation_WAR_EvoVacationportlet_type_"+ var)));
+		if(!(element.isSelected()))
+			element.click();
 		break;
 		}
 		}

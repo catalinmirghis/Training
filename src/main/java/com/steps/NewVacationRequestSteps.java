@@ -6,6 +6,7 @@ import com.pages.DictionaryPage;
 import com.pages.NewVacationRequestPage;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import static ch.lambdaj.Lambda.join;
@@ -57,5 +58,16 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	@Step
 	public void click_buttoncancel() {
 		newVacationRequest.click_Cancel();
+	}
+	
+	@StepGroup
+	public void newRequestSteps(String vacationType,String keyword){
+		click_signin_newrequest();
+		click_input_Startdate();
+		click_input_Enddate();
+		selectavacation(vacationType);
+		click_comment();
+		enter_a_comment(keyword);
+		click_buttonsave();
 	}
 }
