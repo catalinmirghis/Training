@@ -54,12 +54,12 @@ public class MyRequestsTest {
 
 		newRequest.click_signin_newrequest();
 		newRequest.enterStartDate(8, 28, 2013);
-		newRequest.selectAVacation("Sick leave", "aaa", "aaa");
+		newRequest.selectAVacation("Sick leave", "aaa", "bbb", "Funeral", "a");
 		newRequest.click_comment();
 		newRequest.enter_a_comment("aaaa");
 		newRequest.enterEndDate(9, 20, 2013);
 		newRequest.click_buttonsave();
- 
+
 		myRequestsSteps.myReqests_Filter_Apply("Holiday");
 
 	}
