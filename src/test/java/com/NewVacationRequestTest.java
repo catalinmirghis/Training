@@ -39,18 +39,31 @@ public class NewVacationRequestTest {
 
 	@Test
 	public void new_request_successfully() throws Exception {
-		endUser.loginSteps("daniel.mocan", "monkey");
+		endUser.loginSteps("nina.ramadan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		newRequest.click_signin_newrequest();
+		//newRequest.click_signin_newrequest();
+		//newRequest.selectAVacation("Special vacation","aaa","ddd","Funeral","a");
+		//newRequest.enterStartDate(7, 28, 2013);
+		//newRequest.enterEndDate(7, 29, 2013);
+		//newRequest.click_buttonsave();	
+		//newRequest.checkSuccesfullMessage("Your request completed successfully.");
+		newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 1, 10, 2014, 20, 1, 2014, "fff","Funeral","a");
+		newRequest.checkSuccesfullMessage("Your request completed successfully.");}
+	
+	@Test
+	public void new_request_failed() throws Exception {
+		
+		homeSteps.goNewVacation();
+		homeSteps.verifyNewVacationPage();
+		/*newRequest.click_signin_newrequest();
 		newRequest.selectAVacation("Special vacation","aaa","ddd","Funeral","a");
-		newRequest.enterStartDate(8, 28, 2013);
-		//newRequest.click_comment();
-		//newRequest.enter_a_comment("aaaa");
-		newRequest.enterEndDate(9, 20, 2013);
+		newRequest.enterStartDate(7, 28, 2013);
+		newRequest.enterEndDate(7, 29, 2013);
 		newRequest.click_buttonsave();	
+		newRequest.checkSuccesfullMessage("Your request failed to complete.");*/
+		newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 1, 10, 2014, 20, 1, 2014, "fff","Funeral","a");
 		newRequest.checkErrorMessage("Your request failed to complete.");
-		//newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 8, 28, 2013, 20, 9, 2013, "fff","Funeral");
-		//newRequest.click_dropDown("Funeral");}
 	}
+	
 }

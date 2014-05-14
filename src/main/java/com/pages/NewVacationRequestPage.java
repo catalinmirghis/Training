@@ -148,5 +148,16 @@ public class NewVacationRequestPage extends PageObject {
 		   System.out.println(message);
 		  }
 		 }
+	public void checkThatYouReceiveTheSuccessMessage(String message) {
+		  String elementText = getDriver()
+		    .findElement(
+		      By.cssSelector(".portlet-msg-success"))
+		      .getText().trim();
+		  if (!elementText.toLowerCase().contains(message.toLowerCase())) {
+		   Assert.fail(String.format("Thef containerf does not contain message!",
+		     message));
+		   System.out.println(message);
+		  }
+		 }
 
 }
