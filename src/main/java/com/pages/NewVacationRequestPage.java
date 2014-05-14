@@ -27,7 +27,7 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_newVacationComment")
 	private WebElementFacade Comment;
 
-	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_commentContent")
+	@FindBy(css = "textarea[name='commentContent']")
 	private WebElementFacade InputComment;
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_saveButton")
@@ -41,6 +41,10 @@ public class NewVacationRequestPage extends PageObject {
 
 	@FindBy(css = "#_evovacation_WAR_EvoVacationportlet_institution input")
 	private WebElementFacade InstitutionInput;
+
+	//@FindBy(id = "_evovacation_WAR_EvoVacationportlet_specialReason")
+	@FindBy(css = "select[name='specialReason']")
+	private WebElementFacade ChooseASpecialVacation;
 
 	public void click_SignIn() {
 		element(NewVacationRequest).click();
@@ -63,17 +67,21 @@ public class NewVacationRequestPage extends PageObject {
 
 	}
 
+	public void click_a_special_vacation(String value) {
+		//ChooseASpecialVacation.click();
+		ChooseASpecialVacation.selectByVisibleText(value);
+	}
+
 	public void selectAVacationType(String vacationType, String keywordDomain,
-			String KeywordInstitution) {
+			String KeywordInstitution, String value, String com) {
 		String var;
 		switch (vacationType) {
 		case "Holiday": {
 			var = "CO";
 			WebElement element = getDriver()
 					.findElement(
-							By.cssSelector(String
-									.format("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var)));
+							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var));
 			element.click();
 			break;
 		}
@@ -81,10 +89,9 @@ public class NewVacationRequestPage extends PageObject {
 			var = "CF";
 			WebElement element = getDriver()
 					.findElement(
-							By.cssSelector(String
-									.format("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var)));
-				element.click();
+							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var));
+			element.click();
 			enter_duration_domain(keywordDomain);
 			enter_institutionname(KeywordInstitution);
 			break;
@@ -93,30 +100,33 @@ public class NewVacationRequestPage extends PageObject {
 			var = "CS";
 			WebElement element = getDriver()
 					.findElement(
-							By.cssSelector(String
-									.format("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var)));
-				element.click();
+							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var));
+			element.click();
+			click_a_special_vacation(value);
+			Click_comment();
+			enter_comment(com);
 			break;
 		}
-		case "Sick leave": 
+		case "Sick leave":
 			var = "CM";
 			WebElement element = getDriver()
 					.findElement(
-							By.cssSelector(String
-									.format("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var)));
-				element.click();
+							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var));
+			element.click();
 			break;
 		}
 	}
+
+	
 
 	public void Click_comment() {
 		Comment.click();
 	}
 
-	public void enter_comment(String keyword) {
-		InputComment.type(keyword);
+	public void enter_comment(String com) {
+		InputComment.type(com);
 	}
 
 	public void click_Save() {

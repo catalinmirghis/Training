@@ -42,13 +42,14 @@ public class NewVacationRequestTest {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		/*newRequest.click_signin_newrequest();
-		newRequest.selectAVacation("Special vacation","aaa","ddd");
+		newRequest.click_signin_newrequest();
+		newRequest.selectAVacation("Special vacation","aaa","ddd","Funeral","a");
 		newRequest.enterStartDate(8, 28, 2013);
-		newRequest.click_comment();
-		newRequest.enter_a_comment("aaaa");
+		//newRequest.click_comment();
+		//newRequest.enter_a_comment("aaaa");
 		newRequest.enterEndDate(9, 20, 2013);
-		newRequest.click_buttonsave();		*/	
-		newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 8, 28, 2013, 20, 9, 2013, "fff");}
-	
+		newRequest.click_buttonsave();		
+		//newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 8, 28, 2013, 20, 9, 2013, "fff","Funeral");
+		//newRequest.click_dropDown("Funeral");}
+	}
 }

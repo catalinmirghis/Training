@@ -34,8 +34,8 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void selectAVacation(String vacationType,String keywordDomain,String KeywordInstitution) {
-		newVacationRequest.selectAVacationType(vacationType,keywordDomain,KeywordInstitution);
+	public void selectAVacation(String vacationType,String keywordDomain,String KeywordInstitution,String value,String com) {
+		newVacationRequest.selectAVacationType(vacationType,keywordDomain,KeywordInstitution,value,com);
 	}
 
 	@Step
@@ -58,7 +58,7 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		newVacationRequest.click_Cancel();
 	}
 
-	@StepGroup
+	@Step
 	public void enterStartDate(int month, int day, int year) throws Exception {
 
 	click_input_Startdate();
@@ -76,10 +76,18 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		Thread.sleep(3000);
 	}
 	
+	@Step
+	public void click_dropDown(String value) throws Exception {
+	     newVacationRequest.click_a_special_vacation(value);   
+	     Thread.sleep(4000);
+	 }
+	
+	
 	@StepGroup
-	public void makeANewVacation(String vacationType, String keywordDomain, String KeywordInstitution, int startdMonth, int startDay, int startYear,int endDay,int endMonth,int endYear,String keyword) throws Exception{
+	public void makeANewVacation(String vacationType, String keywordDomain, String KeywordInstitution, int startdMonth, int startDay, int startYear,int endDay,int endMonth,int endYear,String keyword,String value,String com) throws Exception{
 		click_signin_newrequest();
-		selectAVacation(vacationType, keywordDomain, KeywordInstitution);
+		selectAVacation(vacationType, keywordDomain, KeywordInstitution,value,com);
+		
 		enterStartDate(startdMonth, startDay, startYear);
 		enterEndDate(endMonth, endDay, endYear);
 		click_comment();

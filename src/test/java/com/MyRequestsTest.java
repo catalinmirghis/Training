@@ -54,7 +54,7 @@ public class MyRequestsTest {
 		
 		newRequest.click_signin_newrequest();
 		newRequest.enterStartDate(8, 28, 2013);
-		newRequest.selectavacation("Sick leave");
+		newRequest.selectAVacation("Sick leave","aaa","bbb","Funeral","a");
 		newRequest.click_comment();
 		newRequest.enter_a_comment("aaaa");
 		newRequest.enterEndDate(9, 20, 2013);
