@@ -1,13 +1,10 @@
 package com.pages;
 
-import java.util.List;
-
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -39,6 +36,12 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_cancelButton")
 	private WebElementFacade CancelButton;
 
+	@FindBy(css = "#_evovacation_WAR_EvoVacationportlet_duration input")
+	private WebElementFacade Durationinput;
+
+	@FindBy(css = "#_evovacation_WAR_EvoVacationportlet_institution input")
+	private WebElementFacade InstitutionInput;
+
 	public void click_SignIn() {
 		element(NewVacationRequest).click();
 	}
@@ -51,23 +54,58 @@ public class NewVacationRequestPage extends PageObject {
 		EndDate.click();
 	}
 
-	public void selectAVacationType(String vacationType) {
+	public void enter_duration_domain(String keyword) {
+		Durationinput.type(keyword);
+	}
+
+	public void enter_institutionname(String keyword) {
+		InstitutionInput.type(keyword);
+
+	}
+
+	public void selectAVacationType(String vacationType, String keywordDomain,
+			String KeywordInstitution) {
 		String var;
 		switch (vacationType) {
-		case "Holiday":
+		case "Holiday": {
 			var = "CO";
-		case "Vacation without payment":
+			WebElement element = getDriver()
+					.findElement(
+							By.cssSelector(String
+									.format("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var)));
+			element.click();
+			break;
+		}
+		case "Vacation without payment": {
 			var = "CF";
-		case "Special vacation":
+			WebElement element = getDriver()
+					.findElement(
+							By.cssSelector(String
+									.format("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var)));
+				element.click();
+			enter_duration_domain(keywordDomain);
+			enter_institutionname(KeywordInstitution);
+			break;
+		}
+		case "Special vacation": {
 			var = "CS";
-		case "Sick leave":
+			WebElement element = getDriver()
+					.findElement(
+							By.cssSelector(String
+									.format("#_evovacation_WAR_EvoVacationportlet_type_"
+											+ var)));
+				element.click();
+			break;
+		}
+		case "Sick leave": 
 			var = "CM";
 			WebElement element = getDriver()
 					.findElement(
 							By.cssSelector(String
 									.format("#_evovacation_WAR_EvoVacationportlet_type_"
 											+ var)));
-			if (!(element.isSelected()))
 				element.click();
 			break;
 		}

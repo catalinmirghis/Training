@@ -42,16 +42,13 @@ public class NewVacationRequestTest {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		newRequest.click_signin_newrequest();
+		/*newRequest.click_signin_newrequest();
+		newRequest.selectAVacation("Special vacation","aaa","ddd");
 		newRequest.enterStartDate(8, 28, 2013);
-		newRequest.selectavacation("Sick leave");
 		newRequest.click_comment();
 		newRequest.enter_a_comment("aaaa");
 		newRequest.enterEndDate(9, 20, 2013);
-		newRequest.click_buttonsave();
-	}
-	/*
-	 * @Test public void new_request_successfully(){ newRequest.newRequestSteps(
-	 * "Sick leave","aaa"); }
-	 */
+		newRequest.click_buttonsave();		*/	
+		newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 8, 28, 2013, 20, 9, 2013, "fff");}
+	
 }
