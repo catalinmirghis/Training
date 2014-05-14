@@ -16,6 +16,10 @@ import com.steps.HomeSteps;
 import com.steps.LogInSteps;
 import com.steps.NewVacationRequestSteps;
 
+/**
+ * @author ninaramadan
+ *
+ */
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
 public class NewVacationRequestTest {
@@ -34,20 +38,20 @@ public class NewVacationRequestTest {
 	public NewVacationRequestSteps newRequest;
 
 	@Test
-	public void login_successfully() {
+	public void new_request_successfully() throws Exception {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		/*newRequest.click_signin_newrequest();
+		newRequest.click_signin_newrequest();
+		newRequest.enterStartDate(8, 28, 2013);
 		newRequest.selectavacation("Sick leave");
 		newRequest.click_comment();
 		newRequest.enter_a_comment("aaaa");
-		newRequest.click_input_Startdate();
-		newRequest.click_input_Enddate();
-		newRequest.click_buttonsave();*/
+		newRequest.enterEndDate(9, 20, 2013);
+		newRequest.click_buttonsave();
 	}
-	@Test
-	public void new_request_successfully(){
-		newRequest.newRequestSteps( "Sick leave","aaa");
-	}
+	/*
+	 * @Test public void new_request_successfully(){ newRequest.newRequestSteps(
+	 * "Sick leave","aaa"); }
+	 */
 }
