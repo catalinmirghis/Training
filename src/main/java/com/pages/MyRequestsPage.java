@@ -15,6 +15,13 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "i[class='icon-book']")
 	private WebElementFacade MyRequests;
 
+	@FindBy(css = "#_evovacation_WAR_EvoVacationportlet_applyButton")
+	private WebElementFacade Applybtn;
+	
+	public void click_Apply_Button() {
+		Applybtn.click();
+	}
+	
 	public void click_MyRequests_Page() {
 		MyRequests.click();
 	}
