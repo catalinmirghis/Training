@@ -59,12 +59,14 @@ public class MyRequestsSteps extends ScenarioSteps {
 			element.click();
 
 	}
-}
 
-// @StepGroup
-// public void myReqests_Filter(){
-// click_MyRequestPage();
-// verifyMyRequestsPage();
-// selectAVacationType("dads");
-//
+
+ @StepGroup
+ public void myReqests_Filter_Apply(String selectFilter){
+ click_MyRequestPage();
+ verifyMyRequestsPage();
+ selectAFilterType(selectFilter);
+ click_Apply_Button();
+ }
+}
 
