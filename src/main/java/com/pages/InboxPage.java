@@ -59,6 +59,8 @@ public class InboxPage extends PageObject {
 				.findElement(
 						By.cssSelector("div.page-links > span.aui-paginator-current-page-report.aui-paginator-total"))
 				.getText().trim();
+		
+		waitABit(3000);
 
 		int noOfPages = tools.StringUtils.getAllIntegerNumbersFromString(
 				noOfPagesContainer).get(1);
@@ -69,7 +71,7 @@ public class InboxPage extends PageObject {
 								By.cssSelector("div.page-links > a.aui-paginator-link.aui-paginator-next-link"))
 						.click();
 			
-		waitABit(5000);
+		waitABit(3000);
 			}
 		}
 	}
