@@ -1,18 +1,20 @@
 package com.steps;
 
-import java.util.List;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.annotations.findby.By;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import com.pages.MyRequestsPage;
 
 public class MyRequestsSteps extends ScenarioSteps {
+	
+	public MyRequestsSteps(Pages pages) {
+		super(pages);
+	}
 
 	public String var;
 	MyRequestsPage myrequestspage;
@@ -33,7 +35,7 @@ public class MyRequestsSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void selectAFilterType(String vacationType) {
+	public void selectAFilterRequest_VacationType(String vacationType) {
 		switch (vacationType) {
 		case "Holiday":
 			var = "HOLIDAYCheckbox";
@@ -60,13 +62,69 @@ public class MyRequestsSteps extends ScenarioSteps {
 
 	}
 
+	@Step
+	public void selectAFilterRequest_DaysNumber(String vacationDays) {
+		switch (vacationDays) {
+		case "1-5":
+			var = "FIFTHCheckbox";
+			break;
+		case "6-10":
+			var = "TENTHCheckbox";
+			break;
+		case "11-20":
+			var = "TWENTIETHCheckbox";
+			break;
+		case "21-50":
+			var = "FIFTIETHCheckbox";
+			break;
+		case "50+":
+			var = "RESTCheckbox";
+		}
+		WebElement element = getDriver()
+				.findElement(
+						By.cssSelector(String
+								.format("#_evovacation_WAR_EvoVacationportlet_"
+										+ var)));
+		if (!(element.isSelected()))
+			element.click();
 
- @StepGroup
- public void myReqests_Filter_Apply(String selectFilter){
- click_MyRequestPage();
- verifyMyRequestsPage();
- selectAFilterType(selectFilter);
- click_Apply_Button();
- }
+	}
+
+	@Step
+	public void selectAFilterRequest_VacationStatus(String vacationStatus) {
+		switch (vacationStatus) {
+		case "Pending":
+			var = "PENDINGCheckbox";
+			break;
+		case "Approved":
+			var = "APPROVEDCheckbox";
+			break;
+		case "Rejected":
+			var = "REJECTEDCheckbox";
+			break;
+		case "Withdrawn":
+			var = "WITHDRAWNCheckbox";
+			break;
+		case "Canceled":
+			var = "CANCELEDCheckbox";
+		}
+		WebElement element = getDriver()
+				.findElement(
+						By.cssSelector(String
+								.format("#_evovacation_WAR_EvoVacationportlet_"
+										+ var)));
+		if (!(element.isSelected()))
+			element.click();
+
+	}
+
+	@StepGroup
+	public void myReqests_Filter_Apply(String selectVacationType, String selectDaysNumber, String selectVacationStatus) {
+		click_MyRequestPage();
+		verifyMyRequestsPage();
+		selectAFilterRequest_VacationType(selectVacationType);
+		selectAFilterRequest_DaysNumber(selectDaysNumber);
+		selectAFilterRequest_VacationStatus(selectVacationStatus);
+		click_Apply_Button();
+	}
 }
-
