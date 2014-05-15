@@ -135,6 +135,11 @@ public class MyRequestsSteps extends ScenarioSteps {
 		myrequestspage.clickOnARequestIsInTheTableList(vacationId);
 	}
 
+	@Step
+	public void click_NextPage(){
+		myrequestspage.click_NextPage();
+	}
+	
 	@StepGroup
 	public void myReqests_Filter_Apply(String selectVacationType, String selectDaysNumber, String selectVacationStatus) {
 		click_MyRequestPage();

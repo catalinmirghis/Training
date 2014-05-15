@@ -50,19 +50,20 @@ public class MyRequestsTest {
 
 	@Test
 	public void filter_MyRequests() throws Exception {
-		endUser.loginSteps("evoportal.pmunu", "monkey");
+		endUser.loginSteps("daniel.mocan", "monkey");
 		endUser.goNewVacation();
 		
 
-		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18,
-		 2016, 20, 1, 2015, "fff","Funeral","a");
+//		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18,
+//		 2016, 20, 1, 2015, "fff","Funeral","a");
 //		newRequest.getRequestID();
 		myRequestsSteps.click_MyRequestPage();
 		myRequestsSteps.verifyMyRequestsPage();
 //		myRequestsSteps.myReqests_Filter_Apply("Special Vacation", "51+","Pending");
-		wait(2000);
+		
+		myRequestsSteps.click_NextPage();
 //		myRequestsSteps.clickPageDropDownFilter();
-////		String vacationId = newRequest.getID();
+//		String vacationId = newRequest.getID();
 //		System.out.println("----------- " + vacationId + "------------------------------");
 //		myRequestsSteps.selectRequest(vacationId);
 
