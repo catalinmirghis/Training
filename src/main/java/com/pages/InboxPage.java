@@ -26,8 +26,8 @@ public class InboxPage extends PageObject {
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_multipleApproveButton")
 	private WebElementFacade ApproveAll;
-	
-	@FindBy (css = ".aui-button:nth-child(1).aui-button input")
+
+	@FindBy(css = ".aui-button:nth-child(1).aui-button input")
 	private WebElementFacade ApproveRequest;
 
 	public void click_inbox() {
@@ -48,12 +48,32 @@ public class InboxPage extends PageObject {
 
 	}
 
-	public void click_approveRequest(){
+	public void click_approveRequest() {
 		ApproveRequest.click();
 		ApproveRequest.click();
-		
+
 	}
-	
+
+	public void goThrowPages() {
+		String noOfPagesContainer = getDriver()
+				.findElement(
+						By.cssSelector("div.page-links > span.aui-paginator-current-page-report.aui-paginator-total"))
+				.getText().trim();
+
+		int noOfPages = tools.StringUtils.getAllIntegerNumbersFromString(
+				noOfPagesContainer).get(1);
+		for (int i = 0; i < noOfPages; i++) {
+			if (i < noOfPages - 1 ) {
+				getDriver()
+						.findElement(
+								By.cssSelector("div.page-links > a.aui-paginator-link.aui-paginator-next-link"))
+						.click();
+			
+		waitABit(5000);
+			}
+		}
+	}
+
 	public static List<Integer> getAllIntegerNumbersFromString(String text) {
 		List<Integer> listOfIntegers = new ArrayList<Integer>();
 		String intNumber = "";

@@ -85,6 +85,12 @@ public class InboxSteps extends ScenarioSteps {
 		inboxPage.click_approveRequest();
 	}
 
+	@Step
+	public void clickGoThrowPages(){
+		inboxPage.goThrowPages();
+	}
+	
+	
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -97,7 +103,7 @@ public class InboxSteps extends ScenarioSteps {
 		clickInbox();
 		// clickAssignedToOthers();
 		// clickCheckAll();
-		clickApproveRequest();
-
+//		clickApproveRequest();
+		clickGoThrowPages();
 	}
 }
