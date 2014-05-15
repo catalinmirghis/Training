@@ -26,6 +26,9 @@ public class InboxPage extends PageObject {
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_multipleApproveButton")
 	private WebElementFacade ApproveAll;
+	
+	@FindBy (css = ".aui-button:nth-child(1).aui-button input")
+	private WebElementFacade ApproveRequest;
 
 	public void click_inbox() {
 		Inbox.click();
@@ -45,6 +48,12 @@ public class InboxPage extends PageObject {
 
 	}
 
+	public void click_approveRequest(){
+		ApproveRequest.click();
+		ApproveRequest.click();
+		
+	}
+	
 	public static List<Integer> getAllIntegerNumbersFromString(String text) {
 		List<Integer> listOfIntegers = new ArrayList<Integer>();
 		String intNumber = "";
