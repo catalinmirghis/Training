@@ -61,9 +61,9 @@ public class MyRequestsTest {
 //		myRequestsSteps.myReqests_Filter_Apply("Special Vacation", "51+","Pending");
 		wait(2000);
 //		myRequestsSteps.clickPageDropDownFilter();
-		String vacationId = newRequest.getID();
-		System.out.println("----------- " + vacationId + "------------------------------");
-		myRequestsSteps.selectRequest(vacationId);
+////		String vacationId = newRequest.getID();
+//		System.out.println("----------- " + vacationId + "------------------------------");
+//		myRequestsSteps.selectRequest(vacationId);
 
 		// newRequest.click_signin_newrequest();
 		// newRequest.enterStartDate(8, 28, 2013);
