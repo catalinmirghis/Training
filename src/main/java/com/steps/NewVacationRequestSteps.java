@@ -50,7 +50,6 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		newVacationRequest.enter_comment(keyword);
 	}
 
-
 	@Step
 	public void click_buttoncancel() {
 		newVacationRequest.click_Cancel();
@@ -91,8 +90,14 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public String click_buttonsave() throws Exception {
+	public void click_buttonsave() throws Exception {
 		newVacationRequest.click_Save();
+		// return newVacationRequest.getVacationId();
+		String requestID = newVacationRequest.getVacationId();
+	}
+
+	@Step
+	public String getID() {
 		return newVacationRequest.getVacationId();
 	}
 

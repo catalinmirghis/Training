@@ -46,6 +46,9 @@ public class InboxTest {
 	
 	@Steps
 	public InboxSteps approveRequest;
+	
+	@Steps
+	public InboxSteps goThrowPages;
 
 	@Issue("#WIKI-1")
 //	@Test
@@ -63,8 +66,9 @@ public class InboxTest {
 		endUser.loginSteps("evoportal.pmunu", "monkey");
 		endUser.goNewVacation();
 		inboxStep.clickInbox();
-		inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
-		inboxStep.clickApproveRequest();
+//		inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
+//		inboxStep.clickApproveRequest();
+		inboxStep.clickGoThrowPages();
 	}
 }
 // }
