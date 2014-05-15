@@ -96,7 +96,7 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		selectAVacation(vacationType, keywordDomain, KeywordInstitution,value,com);
 		enterStartDate(startdMonth, startDay, startYear);
 		enterEndDate(endMonth, endDay, endYear);
-		
+//		int endM = Integer.parseInt("endMonyh");
 		click_buttonsave();
 		
 	}
