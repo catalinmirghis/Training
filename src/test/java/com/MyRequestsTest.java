@@ -54,7 +54,7 @@ public class MyRequestsTest {
 
 		// newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 1, 10,
 		// 2014, 20, 1, 2014, "fff","Funeral","a");
-		myRequestsSteps.myReqests_Filter_Apply("Holiday", "1-5","Withdrawn");
+		myRequestsSteps.myReqests_Filter_Apply("Holiday", "1-5","Approved");
 
 		// newRequest.click_signin_newrequest();
 		// newRequest.enterStartDate(8, 28, 2013);

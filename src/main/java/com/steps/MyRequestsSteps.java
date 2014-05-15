@@ -117,6 +117,12 @@ public class MyRequestsSteps extends ScenarioSteps {
 			element.click();
 
 	}
+	
+	@Step
+	public void selectRequest(){
+		
+		
+	}
 
 	@StepGroup
 	public void myReqests_Filter_Apply(String selectVacationType, String selectDaysNumber, String selectVacationStatus) {
