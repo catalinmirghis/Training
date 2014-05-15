@@ -138,6 +138,7 @@ public class NewVacationRequestPage extends PageObject {
 	public void click_Cancel() {
 		CancelButton.click();
 	}
+	
 	public void checkThatYouReceiveTheErrorMessage(String message) {
 		  String elementText = getDriver()
 		    .findElement(
@@ -149,6 +150,7 @@ public class NewVacationRequestPage extends PageObject {
 		   System.out.println(message);
 		  }
 		 }
+	
 	public void checkThatYouReceiveTheSuccessMessage(String message) {
 		  String elementText = getDriver()
 		    .findElement(
