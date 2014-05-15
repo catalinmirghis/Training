@@ -79,6 +79,11 @@ public class InboxSteps extends ScenarioSteps {
 	public void clickOnAnEmployeeLink(String employeeName) {
 		inboxPage.clickOnAnEmployeeLink(employeeName);
 	}
+	
+	@Step
+	public void clickApproveRequest(){
+		inboxPage.click_approveRequest();
+	}
 
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
@@ -92,6 +97,7 @@ public class InboxSteps extends ScenarioSteps {
 		clickInbox();
 		// clickAssignedToOthers();
 		// clickCheckAll();
+		clickApproveRequest();
 
 	}
 }
