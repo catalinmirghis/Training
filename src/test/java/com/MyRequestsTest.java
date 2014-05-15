@@ -19,6 +19,7 @@ import com.steps.LogInSteps;
 import com.steps.MyRequestsSteps;
 import com.steps.NewVacationRequestSteps;
 
+
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
 
@@ -45,7 +46,7 @@ public class MyRequestsTest {
 	public MyRequestsSteps myRequestsSteps;
 
 	@Steps
-	public NewVacationRequestSteps newRequest;
+	public  NewVacationRequestSteps newRequest;
 
 	@Test
 	public void filter_MyRequests() throws Exception {

@@ -43,7 +43,7 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "#_evovacation_WAR_EvoVacationportlet_institution input")
 	private WebElementFacade InstitutionInput;
 
-	//@FindBy(id = "_evovacation_WAR_EvoVacationportlet_specialReason")
+	// @FindBy(id = "_evovacation_WAR_EvoVacationportlet_specialReason")
 	@FindBy(css = "select[name='specialReason']")
 	private WebElementFacade ChooseASpecialVacation;
 
@@ -69,7 +69,7 @@ public class NewVacationRequestPage extends PageObject {
 	}
 
 	public void click_a_special_vacation(String value) {
-		//ChooseASpecialVacation.click();
+		// ChooseASpecialVacation.click();
 		ChooseASpecialVacation.selectByVisibleText(value);
 	}
 
@@ -79,19 +79,17 @@ public class NewVacationRequestPage extends PageObject {
 		switch (vacationType) {
 		case "Holiday": {
 			var = "CO";
-			WebElement element = getDriver()
-					.findElement(
-							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var));
+			WebElement element = getDriver().findElement(
+					By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+							+ var));
 			element.click();
 			break;
 		}
 		case "Vacation without payment": {
 			var = "CF";
-			WebElement element = getDriver()
-					.findElement(
-							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var));
+			WebElement element = getDriver().findElement(
+					By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+							+ var));
 			element.click();
 			enter_duration_domain(keywordDomain);
 			enter_institutionname(KeywordInstitution);
@@ -99,10 +97,9 @@ public class NewVacationRequestPage extends PageObject {
 		}
 		case "Special vacation": {
 			var = "CS";
-			WebElement element = getDriver()
-					.findElement(
-							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var));
+			WebElement element = getDriver().findElement(
+					By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+							+ var));
 			element.click();
 			click_a_special_vacation(value);
 			Click_comment();
@@ -111,16 +108,13 @@ public class NewVacationRequestPage extends PageObject {
 		}
 		case "Sick leave":
 			var = "CM";
-			WebElement element = getDriver()
-					.findElement(
-							By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
-											+ var));
+			WebElement element = getDriver().findElement(
+					By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
+							+ var));
 			element.click();
 			break;
 		}
 	}
-
-	
 
 	public void Click_comment() {
 		Comment.click();
@@ -132,39 +126,40 @@ public class NewVacationRequestPage extends PageObject {
 
 	public void click_Save() {
 		SaveButton.click();
-		
+
 	}
 
 	public void click_Cancel() {
 		CancelButton.click();
 	}
+
 	public void checkThatYouReceiveTheErrorMessage(String message) {
-		  String elementText = getDriver()
-		    .findElement(
-		      By.cssSelector(".portlet-body >.portlet-msg-error"))
-		      .getText().trim();
-		  if (!elementText.toLowerCase().contains(message.toLowerCase())) {
-		   Assert.fail(String.format("Thef containerf does not contain message!",
-		     message));
-		   System.out.println(message);
-		  }
-		 }
+		String elementText = getDriver()
+				.findElement(
+						By.cssSelector(".portlet-body >.portlet-msg-error"))
+				.getText().trim();
+		if (!elementText.toLowerCase().contains(message.toLowerCase())) {
+			Assert.fail(String.format(
+					"Thef containerf does not contain message!", message));
+			System.out.println(message);
+		}
+	}
+
 	public void checkThatYouReceiveTheSuccessMessage(String message) {
-		  String elementText = getDriver()
-		    .findElement(
-		      By.cssSelector(".portlet-msg-success"))
-		      .getText().trim();
-		  if (!elementText.toLowerCase().contains(message.toLowerCase())) {
-		   Assert.fail(String.format("Thef containerf does not contain message!",
-		     message));
-		   System.out.println(message);
-		  }
-		 }
-	
-	public String getVacationId(){
-		  String url = getDriver().getCurrentUrl();
-		  String[] valueList = url.split("=");
-		  return  valueList[valueList.length-1];
-		 }
+		String elementText = getDriver()
+				.findElement(By.cssSelector(".portlet-msg-success")).getText()
+				.trim();
+		if (!elementText.toLowerCase().contains(message.toLowerCase())) {
+			Assert.fail(String.format(
+					"Thef containerf does not contain message!", message));
+			System.out.println(message);
+		}
+	}
+
+	public String getVacationId() {
+		String url = getDriver().getCurrentUrl();
+		String[] valueList = url.split("=");
+		return valueList[valueList.length - 1];
+	}
 
 }
