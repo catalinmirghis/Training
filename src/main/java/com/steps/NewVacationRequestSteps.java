@@ -9,7 +9,7 @@ import com.pages.NewVacationRequestPage;
 
 /**
  * @author ninaramadan
- *
+ * 
  */
 public class NewVacationRequestSteps extends ScenarioSteps {
 
@@ -34,8 +34,10 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void selectAVacation(String vacationType,String keywordDomain,String KeywordInstitution,String value,String com) {
-		newVacationRequest.selectAVacationType(vacationType,keywordDomain,KeywordInstitution,value,com);
+	public void selectAVacation(String vacationType, String keywordDomain,
+			String KeywordInstitution, String value, String com) {
+		newVacationRequest.selectAVacationType(vacationType, keywordDomain,
+				KeywordInstitution, value, com);
 	}
 
 	@Step
@@ -48,10 +50,6 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		newVacationRequest.enter_comment(keyword);
 	}
 
-	@Step
-	public void click_buttonsave() {
-		newVacationRequest.click_Save();
-	}
 
 	@Step
 	public void click_buttoncancel() {
@@ -61,8 +59,8 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	@Step
 	public void enterStartDate(int month, int day, int year) throws Exception {
 
-	click_input_Startdate();
-	calendarPage.setDate(month, day, year);
+		click_input_Startdate();
+		calendarPage.setDate(month, day, year);
 
 		Thread.sleep(3000);
 	}
@@ -75,31 +73,42 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 
 		Thread.sleep(3000);
 	}
-	
+
 	@Step
 	public void click_dropDown(String value) throws Exception {
-	     newVacationRequest.click_a_special_vacation(value);   
-	     Thread.sleep(4000);
-	 }
-	@Step
-	public void checkErrorMessage(String message)
-	{newVacationRequest.checkThatYouReceiveTheErrorMessage(message);
-	}
-	
-	@Step
-	public void checkSuccesfullMessage(String message)
-	{newVacationRequest.checkThatYouReceiveTheSuccessMessage(message);
-	}
-	@StepGroup
-	public void makeANewVacation(String vacationType, String keywordDomain, String KeywordInstitution, int startdMonth, int startDay, int startYear,int endDay,int endMonth,int endYear,String keyword,String value,String com) throws Exception{
-		click_signin_newrequest();
-		selectAVacation(vacationType, keywordDomain, KeywordInstitution,value,com);
-		enterStartDate(startdMonth, startDay, startYear);
-		enterEndDate(endMonth, endDay, endYear);
-//		int endM = Integer.parseInt("endMonyh");
-		click_buttonsave();
-		
+		newVacationRequest.click_a_special_vacation(value);
+		Thread.sleep(4000);
 	}
 
-	
+	@Step
+	public void checkErrorMessage(String message) {
+		newVacationRequest.checkThatYouReceiveTheErrorMessage(message);
+	}
+
+	@Step
+	public void checkSuccesfullMessage(String message) {
+		newVacationRequest.checkThatYouReceiveTheSuccessMessage(message);
+	}
+
+	@Step
+	public String click_buttonsave() throws Exception {
+		newVacationRequest.click_Save();
+		return newVacationRequest.getVacationId();
+	}
+
+	@StepGroup
+	public void makeANewVacation(String vacationType, String keywordDomain,
+			String KeywordInstitution, int startMonth, int startDay,
+			int startYear, int endMonth, int endDay, int endYear,
+			String keyword, String value, String com) throws Exception {
+		click_signin_newrequest();
+		selectAVacation(vacationType, keywordDomain, KeywordInstitution, value,
+				com);
+		enterStartDate(startMonth, startDay, startYear);
+		enterEndDate(endMonth, endDay, endYear);
+		// int endM = Integer.parseInt("endMonyh");
+		click_buttonsave();
+
+	}
+
 }

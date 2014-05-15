@@ -132,6 +132,7 @@ public class NewVacationRequestPage extends PageObject {
 
 	public void click_Save() {
 		SaveButton.click();
+		
 	}
 
 	public void click_Cancel() {
@@ -158,6 +159,12 @@ public class NewVacationRequestPage extends PageObject {
 		     message));
 		   System.out.println(message);
 		  }
+		 }
+	
+	public String getVacationId(){
+		  String url = getDriver().getCurrentUrl();
+		  String[] valueList = url.split("=");
+		  return  valueList[valueList.length-1];
 		 }
 
 }

@@ -43,6 +43,9 @@ public class InboxTest {
 
 	@Steps
 	public InboxSteps approveAll;
+	
+	@Steps
+	public InboxSteps approveRequest;
 
 	@Issue("#WIKI-1")
 //	@Test
@@ -61,6 +64,7 @@ public class InboxTest {
 		endUser.goNewVacation();
 		inboxStep.clickInbox();
 		inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
+		inboxStep.clickApproveRequest();
 	}
 }
 // }
