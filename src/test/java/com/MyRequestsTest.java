@@ -51,6 +51,8 @@ public class MyRequestsTest {
 	public void filter_MyRequests() throws Exception {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		endUser.goNewVacation();
+			
+		myRequestsSteps.myReqests_Filter_Apply("Holiday");
 
 		newRequest.click_signin_newrequest();
 		newRequest.enterStartDate(8, 28, 2013);
