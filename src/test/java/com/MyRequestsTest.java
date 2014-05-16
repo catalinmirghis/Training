@@ -52,10 +52,20 @@ public class MyRequestsTest {
 	public void filter_MyRequests() throws Exception {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		endUser.goNewVacation();
+		
 
-		// newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 1, 10,
-		// 2014, 20, 1, 2014, "fff","Funeral","a");
-		myRequestsSteps.myReqests_Filter_Apply("Holiday", "1-5","Withdrawn");
+//		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18,
+//		 2016, 20, 1, 2015, "fff","Funeral","a");
+//		newRequest.getRequestID();
+		myRequestsSteps.click_MyRequestPage();
+		myRequestsSteps.verifyMyRequestsPage();
+//		myRequestsSteps.myReqests_Filter_Apply("Special Vacation", "51+","Pending");
+		
+		myRequestsSteps.click_NextPage();
+//		myRequestsSteps.clickPageDropDownFilter();
+//		String vacationId = newRequest.getID();
+//		System.out.println("----------- " + vacationId + "------------------------------");
+//		myRequestsSteps.selectRequest(vacationId);
 
 		// newRequest.click_signin_newrequest();
 		// newRequest.enterStartDate(8, 28, 2013);

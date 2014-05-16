@@ -9,6 +9,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.openqa.selenium.WebElement;
 
 import com.pages.MyRequestsPage;
+import com.pages.NewVacationRequestPage;
 
 public class MyRequestsSteps extends ScenarioSteps {
 	
@@ -18,6 +19,7 @@ public class MyRequestsSteps extends ScenarioSteps {
 
 	public String var;
 	MyRequestsPage myrequestspage;
+	NewVacationRequestPage newVacationRequestPage;
 
 	@Step
 	public void click_MyRequestPage() {
@@ -51,6 +53,9 @@ public class MyRequestsSteps extends ScenarioSteps {
 			break;
 		case "Show only future vacations":
 			var = "futureVacationsCheckbox";
+			break;
+		default:
+		 var="ALLCheckbox";	
 		}
 		WebElement element = getDriver()
 				.findElement(
@@ -77,8 +82,11 @@ public class MyRequestsSteps extends ScenarioSteps {
 		case "21-50":
 			var = "FIFTIETHCheckbox";
 			break;
-		case "50+":
+		case "51+":
 			var = "RESTCheckbox";
+			break;
+			default:
+			 var="ALLCheckbox";		
 		}
 		WebElement element = getDriver()
 				.findElement(
@@ -107,6 +115,10 @@ public class MyRequestsSteps extends ScenarioSteps {
 			break;
 		case "Canceled":
 			var = "CANCELEDCheckbox";
+			break;
+			default:
+			 var="ALLCheckbox";	
+			
 		}
 		WebElement element = getDriver()
 				.findElement(
@@ -117,7 +129,17 @@ public class MyRequestsSteps extends ScenarioSteps {
 			element.click();
 
 	}
+	
+	@Step
+	public void selectRequest(String vacationId){
+		myrequestspage.clickOnARequestIsInTheTableList(vacationId);
+	}
 
+	@Step
+	public void click_NextPage(){
+		myrequestspage.click_NextPage();
+	}
+	
 	@StepGroup
 	public void myReqests_Filter_Apply(String selectVacationType, String selectDaysNumber, String selectVacationStatus) {
 		click_MyRequestPage();
@@ -126,5 +148,10 @@ public class MyRequestsSteps extends ScenarioSteps {
 		selectAFilterRequest_DaysNumber(selectDaysNumber);
 		selectAFilterRequest_VacationStatus(selectVacationStatus);
 		click_Apply_Button();
+	}
+	
+	@StepGroup
+	public void clickPageDropDownFilter(){
+		myrequestspage.clickPageDropDownFilter();
 	}
 }

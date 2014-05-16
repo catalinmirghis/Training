@@ -139,6 +139,7 @@ public class NewVacationRequestPage extends PageObject {
 	}
 
 	public void checkThatYouReceiveTheErrorMessage(String message) {
+
 		String elementText = getDriver()
 				.findElement(
 						By.cssSelector(".portlet-body >.portlet-msg-error"))
