@@ -7,12 +7,9 @@ import net.thucydides.core.annotations.Story;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.requirements.Application;
 import com.steps.LogInSteps;
@@ -53,19 +50,25 @@ public class MyRequestsTest {
 		endUser.loginSteps("daniel.mocan", "monkey");
 		endUser.goNewVacation();
 		
+//
+		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18,
+		 2016, 20, 1, 2015, "fff","Funeral","a");
+////		newRequest.getRequestID();
+////		myRequestsSteps.click_MyRequestPage();
+////		myRequestsSteps.verifyMyRequestsPage();
+////		myRequestsSteps.myReqests_Filter_Apply("Special Vacation", "51+","Pending");
 
-//		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18,
-//		 2016, 20, 1, 2015, "fff","Funeral","a");
-//		newRequest.getRequestID();
+////		myRequestsSteps.clickPageDropDownFilter();
+	
+		String VacationId = newRequest.getID();
+		System.out.println("----------- " + VacationId + "------------------------------");
 		myRequestsSteps.click_MyRequestPage();
-		myRequestsSteps.verifyMyRequestsPage();
-//		myRequestsSteps.myReqests_Filter_Apply("Special Vacation", "51+","Pending");
+		myRequestsSteps.verifySearchResultsContainsID(VacationId);
+//		myRequestsSteps.clickNextPage();
+//		myRequestsSteps.verifyMyRequestsPage();
+//		newRequest.findRequest("");
 		
-		myRequestsSteps.click_NextPage();
-//		myRequestsSteps.clickPageDropDownFilter();
-//		String vacationId = newRequest.getID();
-//		System.out.println("----------- " + vacationId + "------------------------------");
-//		myRequestsSteps.selectRequest(vacationId);
+//		myRequestsSteps.selectRequest(VacationId);
 
 		// newRequest.click_signin_newrequest();
 		// newRequest.enterStartDate(8, 28, 2013);

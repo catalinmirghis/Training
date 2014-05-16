@@ -93,12 +93,18 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	public void click_buttonsave() throws Exception {
 		newVacationRequest.click_Save();
 		// return newVacationRequest.getVacationId();
-		String requestID = newVacationRequest.getVacationId();
+//		String Vacationd = newVacationRequest.getVacationId();
 	}
 
 	@Step
 	public String getID() {
 		return newVacationRequest.getVacationId();
+	}
+	
+	@Step
+	public void findRequest(String VacationId){
+		newVacationRequest.findRequest(VacationId);
+		
 	}
 
 	@StepGroup
