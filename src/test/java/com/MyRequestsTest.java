@@ -52,7 +52,7 @@ public class MyRequestsTest {
 		
 //
 		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18,
-		 2016, 20, 1, 2015, "fff","Funeral","a");
+		 2016, 20, 1, 2015, "fff","Funeral");
 ////		newRequest.getRequestID();
 ////		myRequestsSteps.click_MyRequestPage();
 ////		myRequestsSteps.verifyMyRequestsPage();

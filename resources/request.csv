@@ -1,0 +1,8 @@
+vacationType,keywordDomain,KeywordInstitution,startMonth,startDay,startYear,endMonth,endDay,endYear,typeOfSpecialVacation,com
+"Holiday","a","c",01,8,2014,01,9,2014,"Funeral","a"
+"Vacation without payment","a","c",01,12,2014,01,14,2014,"Funeral","as"
+"Special vacation","aa","kpp",12,1,2014,12,5,2014,"Marriage","dfg"
+"Special vacation","aaf","ggg",12,27,2014,01,5,2015,"Child birth","awd"
+"Special vacation","ana","are",05,5,2014,05,6,2014,"Funeral","aaaa"
+"Special vacation","mere","pere",08,23,2014,08,25,2014,"Other","all"
+"Sick leave","ad","lam",01,7,2020,01,8,2020,"Funeral","a"
