@@ -41,35 +41,47 @@ public class NewVacationRequestTest {
 	public NewVacationRequestSteps newRequest;
 
 	@Test
-	public void enter_comment_duration_and_institution_international_characters()
+	public void succesfull_enter_comment_duration_and_institution_international_characters()
 			throws Exception {
 		endUser.loginSteps("nina.ramadan", "monkey");
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
-		newRequest.makeANewVacation("Vacation without payment", "ăîșț",
-				"șșșțțță", 07, 01, 2014, 07, 03, 2014, "șșșț", "", "");
+		newRequest.makeANewVacation("Holiday", "ăîșț",
+				"șșșțțță", 07, 14, 2014, 07, 15, 2014, "Other","a");
 		newRequest
 				.checkSuccesfullMessage("Your request completed successfully.");
+		
+		newRequest.checkErrorMessage("Evo Vacation Portlet is temporarily unavailable.");
+	}
+    @Test
+    public void failed_enter_comment_duration_and_institution_international_characters()
+			throws Exception {
+		endUser.loginSteps("nina.ramadan", "monkey");
+		homeSteps.goNewVacation();
+		homeSteps.verifyNewVacationPage();
+		newRequest.makeANewVacation("Sick leave", "ăîșț",
+				"șșșțțță", 07, 14, 2014, 07, 15, 2014, "Other","a");
 		newRequest.checkErrorMessage("Your request failed to complete.");
 	}
-
+    
+    
+    
 	@Test
-	public void new_request_successfully() throws Exception {
+	public void a_new_request_successfully() throws Exception {
 
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
 		newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 1, 10,
-				2014, 20, 1, 2014, "fff", "Funeral", "a");
-		newRequest
-				.checkSuccesfullMessage("Your request completed successfully.");
+				2014, 20, 1, 2014, "Funeral","a");
+		newRequest.checkSuccesfullMessage("Your request completed successfully.");
 	}
 
 	@Test
-	public void new_request_failed() throws Exception {
+	public void a_new_request_failed() throws Exception {
 
 		homeSteps.goNewVacation();
 		newRequest.makeANewVacation("Special vacation", "aaa", "bbb", 1, 10,
-				2014, 20, 1, 2014, "fff", "Funeral", "a");
+				2014, 20, 1, 2014, "Funeral","a");
 		newRequest.checkErrorMessage("Your request failed to complete.");
 	}
 
