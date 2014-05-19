@@ -3,11 +3,9 @@ package tools;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
 import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Flags;
-import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -16,9 +14,13 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.mail.Flags.Flag;
 import javax.mail.search.FlagTerm;
 
+import net.thucydides.core.pages.SystemClock;
+
 public class ReadMail {
+	String beta = "";
 	Properties properties = null;
 	private Session session = null;
 	private Store store = null;
@@ -31,6 +33,10 @@ public class ReadMail {
 	}
 
 	public void readLastMails() {
+		String sbj = "You have submitted a new Vacation Request";
+		
+		
+		
 		properties = new Properties();
 		properties.setProperty("mail.host", "mail.evozon.com");
 		properties.setProperty("mail.port", "993");
@@ -56,12 +62,26 @@ public class ReadMail {
 			System.out.println("-------------------------------");
 			System.out.println("Date : " + message.getSentDate());
 			System.out.println("From : " + from[0]);
+			
+
 			System.out.println("Subject: " + message.getSubject());
+			
+			String subject = message.getSubject();
+			
 			System.out.println("Content :");
 			processMessageBody(message);
+			System.out.println();
 			System.out.println("--------------------------------");
 
 			// }
+		
+			
+			if (subject.toLowerCase().trim().equals(sbj.toLowerCase().trim())){
+				System.out.println("The email was received successfully!");
+
+			}
+			
+	
 			inbox.close(true);
 			store.close();
 		} catch (NoSuchProviderException e) {
@@ -78,6 +98,9 @@ public class ReadMail {
 			// then check for multipart
 			if (content instanceof String) {
 				System.out.println(content);
+				
+				beta = content.toString();
+				
 			} else if (content instanceof Multipart) {
 				Multipart multiPart = (Multipart) content;
 				procesMultiPart(multiPart);
@@ -89,6 +112,7 @@ public class ReadMail {
 				}
 
 			}
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -96,7 +120,28 @@ public class ReadMail {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void getContentDate(){
+		int i;
+		StringBuilder started = new StringBuilder();
+		StringBuilder ended = new StringBuilder();
+		
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(0);
+		started.append(i);
+		started.append("/");
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(1);
+		started.append(i);
+		started.append("/");
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(3);
+		
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(4);
+		started.append(i);
+		started.append("/");
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(5);
+		started.append(i);
+		started.append("/");
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(6);
+	}
 	public void procesMultiPart(Multipart content) {
 
 		try {

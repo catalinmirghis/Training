@@ -6,6 +6,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import com.pages.CalendarPage;
 import com.pages.NewVacationRequestPage;
+import tools.ReadMail;
 
 /**
  * @author ninaramadan
@@ -17,6 +18,7 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	NewVacationRequestPage newVacationRequest;
 	CalendarPage calendarPage;
 	HomeSteps homeSteps;
+	ReadMail readEmail;
 
 	@Step
 	public void click_signin_newrequest() {

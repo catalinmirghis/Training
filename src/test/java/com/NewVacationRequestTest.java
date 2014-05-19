@@ -5,8 +5,6 @@ import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.junit.annotations.UseTestDataFrom;
-import net.thucydides.junit.runners.ThucydidesParameterizedRunner;
 import net.thucydides.junit.runners.ThucydidesRunner;
 
 import org.junit.Test;
