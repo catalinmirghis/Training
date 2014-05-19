@@ -103,7 +103,7 @@ public class InboxSteps extends ScenarioSteps {
 		clickInbox();
 		// clickAssignedToOthers();
 		// clickCheckAll();
-//		clickApproveRequest();
 		clickGoThrowPages();
+//		clickApproveRequest();
 	}
 }
