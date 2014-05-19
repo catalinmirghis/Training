@@ -43,7 +43,7 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "#_evovacation_WAR_EvoVacationportlet_institution input")
 	private WebElementFacade InstitutionInput;
 
-	// @FindBy(id = "_evovacation_WAR_EvoVacationportlet_specialReason")
+	
 	@FindBy(css = "select[name='specialReason']")
 	private WebElementFacade ChooseASpecialVacation;
 
@@ -69,12 +69,11 @@ public class NewVacationRequestPage extends PageObject {
 	}
 
 	public void click_a_special_vacation(String value) {
-		// ChooseASpecialVacation.click();
 		ChooseASpecialVacation.selectByVisibleText(value);
 	}
 
 	public void selectAVacationType(String vacationType, String keywordDomain,
-			String KeywordInstitution, String value, String com) {
+			String KeywordInstitution, String value,String com) {
 		String var;
 		switch (vacationType) {
 		case "Holiday": {
@@ -83,6 +82,8 @@ public class NewVacationRequestPage extends PageObject {
 					By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
 							+ var));
 			element.click();
+			Click_comment();
+			enter_comment(com);
 			break;
 		}
 		case "Vacation without payment": {
@@ -93,6 +94,8 @@ public class NewVacationRequestPage extends PageObject {
 			element.click();
 			enter_duration_domain(keywordDomain);
 			enter_institutionname(KeywordInstitution);
+			Click_comment();
+			enter_comment(com);
 			break;
 		}
 		case "Special vacation": {
@@ -112,6 +115,8 @@ public class NewVacationRequestPage extends PageObject {
 					By.cssSelector("#_evovacation_WAR_EvoVacationportlet_type_"
 							+ var));
 			element.click();
+			Click_comment();
+			enter_comment(com);
 			break;
 		}
 	}
@@ -139,11 +144,10 @@ public class NewVacationRequestPage extends PageObject {
 				.findElement(
 						By.cssSelector(".portlet-body >.portlet-msg-error"))
 				.getText().trim();
-		if (!elementText.toLowerCase().contains(message.toLowerCase())) {
-			Assert.fail(String.format(
-					"Thef containerf does not contain message!", message));
+//		if (!elementText.toLowerCase().contains(message.toLowerCase())) {
+			Assert.assertTrue("Thef containerf does not contain message!" + message,elementText.toLowerCase().contains(message.toLowerCase()));
 			System.out.println(message);
-		}
+		
 	}
 
 	public void checkThatYouReceiveTheSuccessMessage(String message) {
@@ -157,10 +161,15 @@ public class NewVacationRequestPage extends PageObject {
 		}
 	}
 
+
+	public void findRequest(String VacationId) {
+		getDriver()
+				.get("http://192.168.1.68:9080/web/lt/new-vacation?p_p_auth=nt6olSiz&p_p_id=evovacation_WAR_EvoVacationportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_evovacation_WAR_EvoVacationportlet_menuItem=my-requests&_evovacation_WAR_EvoVacationportlet_myRequestState=view-vacation&_evovacation_WAR_EvoVacationportlet_backMenuItem=my-requests&_evovacation_WAR_EvoVacationportlet_vacationId=2312");
+	}
+
 	public String getVacationId() {
-		String url = getDriver().getCurrentUrl();
-		String[] valueList = url.split("=");
-		return valueList[valueList.length - 1];
+		String[] urlList = getDriver().getCurrentUrl().split("=");
+		return urlList[urlList.length - 1];
 	}
 
 }

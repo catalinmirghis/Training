@@ -35,9 +35,9 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 
 	@Step
 	public void selectAVacation(String vacationType, String keywordDomain,
-			String KeywordInstitution, String value, String com) {
+			String KeywordInstitution, String value,String com) {
 		newVacationRequest.selectAVacationType(vacationType, keywordDomain,
-				KeywordInstitution, value, com);
+				KeywordInstitution, value,com);
 	}
 
 	@Step
@@ -93,27 +93,32 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	public void click_buttonsave() throws Exception {
 		newVacationRequest.click_Save();
 		// return newVacationRequest.getVacationId();
-		String requestID = newVacationRequest.getVacationId();
+//		String Vacationd = newVacationRequest.getVacationId();
 	}
 
 	@Step
 	public String getID() {
 		return newVacationRequest.getVacationId();
 	}
+	
+	@Step
+	public void findRequest(String VacationId){
+		newVacationRequest.findRequest(VacationId);
+		
+	}
 
 	@StepGroup
 	public void makeANewVacation(String vacationType, String keywordDomain,
 			String KeywordInstitution, int startMonth, int startDay,
 			int startYear, int endMonth, int endDay, int endYear,
-			String keyword, String value, String com) throws Exception {
+			 String typeOfSpecialVacation,String com) throws Exception {
 		click_signin_newrequest();
-		selectAVacation(vacationType, keywordDomain, KeywordInstitution, value,
-				com);
+		selectAVacation(vacationType, keywordDomain, KeywordInstitution, typeOfSpecialVacation,com
+				);
 		enterStartDate(startMonth, startDay, startYear);
 		enterEndDate(endMonth, endDay, endYear);
-		// int endM = Integer.parseInt("endMonyh");
 		click_buttonsave();
-
+		 
 	}
 
 }
