@@ -33,6 +33,7 @@ public class ReadMail {
 	}
 
 	public void readLastMails() {
+		
 		String sbj = "You have submitted a new Vacation Request";
 		
 		
@@ -77,7 +78,7 @@ public class ReadMail {
 		
 			
 			if (subject.toLowerCase().trim().equals(sbj.toLowerCase().trim())){
-				System.out.println("The email was received successfully!");
+				System.out.println("The subject is the same");
 
 			}
 			
@@ -121,7 +122,7 @@ public class ReadMail {
 		}
 	}
 	
-	public void getContentDate(){
+	public void getContentDate(String startdate, String enddate){
 		int i;
 		StringBuilder started = new StringBuilder();
 		StringBuilder ended = new StringBuilder();
@@ -132,15 +133,25 @@ public class ReadMail {
 		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(1);
 		started.append(i);
 		started.append("/");
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(3);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(2);
+		started.append(i);
 		
+		System.out.println(started);
+		
+		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(3);
+		ended.append(i);
+		ended.append("/");
 		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(4);
-		started.append(i);
-		started.append("/");
+		ended.append(i);
+		ended.append("/");
 		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(5);
-		started.append(i);
-		started.append("/");
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(6);
+		ended.append(i);
+		
+		System.out.println(ended);
+		
+		if(startdate.equals(started.toString()) && enddate.equals(ended.toString())){
+			System.out.println("The content is the same");
+		}
 	}
 	public void procesMultiPart(Multipart content) {
 
@@ -168,6 +179,7 @@ public class ReadMail {
 	public static void main(String[] args) {
 		ReadMail sample = new ReadMail();
 		sample.readLastMails();
+		sample.getContentDate("18/1/2016","20/1/2016");
 	}
 
 }

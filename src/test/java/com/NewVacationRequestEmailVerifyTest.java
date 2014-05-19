@@ -11,11 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import tools.ReadMail;
+
 import com.requirements.Application;
-import com.steps.HomeSteps;
 import com.steps.LogInSteps;
 import com.steps.NewVacationRequestSteps;
-import tools.ReadMail;
 
 @Story(Application.Search.SearchByKeyword.class)
 @RunWith(ThucydidesRunner.class)
@@ -40,12 +40,12 @@ public class NewVacationRequestEmailVerifyTest {
 	public void verifyIfTheRequestWasSent() throws Exception {
 		endUser.loginSteps("catalin.mirghis", "monkey");
 		endUser.goNewVacation();
-		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18, 2016, 20,
-				1, 2015, "fff", "Funeral");
+		newRequest.makeANewVacation("Holiday", "aaa", "bbb", 1, 18, 2016, 1,
+				20, 2016, "fff", "Funeral");
 		newRequest.checkSuccesfullMessage("Your request completed successfully.");
+		Thread.sleep(10000);
 		readEmail.readLastMails();
-//		readEmail.processMessageBody("","You have submitted a new Vacation Request","EvoPortal Team","Dear Catalin Mirghis, <br/> <br/>You have submitted a new Vacation Request. <br/>The Vacation interval is");
-		
+		readEmail.getContentDate("18/1/2016","20/1/2016");
 
 	}
 }
