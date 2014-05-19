@@ -66,9 +66,10 @@ public class InboxTest {
 		endUser.loginSteps("evoportal.pmunu", "monkey");
 		endUser.goNewVacation();
 		inboxStep.clickInbox();
+		inboxStep.clickGoThrowPages();
 //		inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
 //		inboxStep.clickApproveRequest();
-		inboxStep.clickGoThrowPages();
+
 	}
 }
 // }
