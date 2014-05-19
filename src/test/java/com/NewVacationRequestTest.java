@@ -56,7 +56,7 @@ public class NewVacationRequestTest {
     @Test
     public void failed_enter_comment_duration_and_institution_international_characters()
 			throws Exception {
-		endUser.loginSteps("nina.ramadan", "monkey");
+		
 		homeSteps.goNewVacation();
 		homeSteps.verifyNewVacationPage();
 		newRequest.makeANewVacation("Sick leave", "ăîșț",
