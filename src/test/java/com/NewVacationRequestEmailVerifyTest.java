@@ -45,7 +45,7 @@ public class NewVacationRequestEmailVerifyTest {
 		newRequest.checkSuccesfullMessage("Your request completed successfully.");
 		Thread.sleep(10000);
 		readEmail.readLastMails();
-		readEmail.getContentDate("18/1/2016","20/1/2016");
+		readEmail.verifyIfTheMailContentsMatch("18/1/2016","20/1/2016");
 
 	}
 }
