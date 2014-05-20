@@ -3,9 +3,11 @@ package tools;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
 import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Flags;
+import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -14,13 +16,12 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
-import javax.mail.Flags.Flag;
 import javax.mail.search.FlagTerm;
 
-import net.thucydides.core.pages.SystemClock;
+import org.junit.Assert;
 
 public class ReadMail {
-	String beta = "";
+	String mailcontent = "";
 	Properties properties = null;
 	private Session session = null;
 	private Store store = null;
@@ -34,9 +35,9 @@ public class ReadMail {
 
 	public void readLastMails() {
 		
-		String sbj = "You have submitted a new Vacation Request";
+		String sbj = "You have submitted a new Vacation Request    ";
 		
-		
+		boolean found = false;
 		
 		properties = new Properties();
 		properties.setProperty("mail.host", "mail.evozon.com");
@@ -77,20 +78,28 @@ public class ReadMail {
 			// }
 		
 			
-			if (subject.toLowerCase().trim().equals(sbj.toLowerCase().trim())){
-				System.out.println("The subject is the same");
-
+			if (subject.toLowerCase().equals(sbj.toLowerCase())){
+				System.out.println("The subjects match");
+				found = true;
+			
 			}
+				
+				
 			
 	
 			inbox.close(true);
 			store.close();
+			
+			
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
+		
+		Assert.assertTrue("The subjects don't match", found);
 	}
+	
 
 	public void processMessageBody(Message message) {
 		try {
@@ -100,7 +109,7 @@ public class ReadMail {
 			if (content instanceof String) {
 				System.out.println(content);
 				
-				beta = content.toString();
+				mailcontent = content.toString();
 				
 			} else if (content instanceof Multipart) {
 				Multipart multiPart = (Multipart) content;
@@ -122,36 +131,37 @@ public class ReadMail {
 		}
 	}
 	
-	public void getContentDate(String startdate, String enddate){
+	public void verifyIfTheMailContentsMatch(String startdate, String enddate){
 		int i;
 		StringBuilder started = new StringBuilder();
 		StringBuilder ended = new StringBuilder();
 		
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(0);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(mailcontent).get(0);
 		started.append(i);
 		started.append("/");
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(1);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(mailcontent).get(1);
 		started.append(i);
 		started.append("/");
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(2);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(mailcontent).get(2);
 		started.append(i);
 		
 		System.out.println(started);
 		
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(3);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(mailcontent).get(3);
 		ended.append(i);
 		ended.append("/");
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(4);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(mailcontent).get(4);
 		ended.append(i);
 		ended.append("/");
-		i=tools.StringUtils.getAllIntegerNumbersFromString(beta).get(5);
+		i=tools.StringUtils.getAllIntegerNumbersFromString(mailcontent).get(5);
 		ended.append(i);
 		
 		System.out.println(ended);
 		
 		if(startdate.equals(started.toString()) && enddate.equals(ended.toString())){
-			System.out.println("The content is the same");
-		}
+			System.out.println("The contents match");
+		}else
+			Assert.fail("The contents don't match");
 	}
 	public void procesMultiPart(Multipart content) {
 
@@ -179,7 +189,7 @@ public class ReadMail {
 	public static void main(String[] args) {
 		ReadMail sample = new ReadMail();
 		sample.readLastMails();
-		sample.getContentDate("18/1/2016","20/1/2016");
+		sample.verifyIfTheMailContentsMatch("18/1/2016","20/1/2016");
 	}
 
 }
