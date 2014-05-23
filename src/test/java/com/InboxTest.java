@@ -43,33 +43,36 @@ public class InboxTest {
 
 	@Steps
 	public InboxSteps approveAll;
-	
+
 	@Steps
 	public InboxSteps approveRequest;
-	
+
 	@Steps
 	public InboxSteps goThrowPages;
 
 	@Issue("#WIKI-1")
-//	@Test
-//	public void login_successfully() {
-//		endUser.loginSteps("evoportal.dmunu", "monkey");
-//		endUser.goNewVacation();
-//		inboxStep.clickInbox();
-//		assignedToOthers.clickAssignedToOthers();
-//		checkAll.clickCheckAll();
-//		approveAll.clickApproveAll();
-//	}
-
+	// @Test
+	// public void login_successfully() {
+	// endUser.loginSteps("evoportal.dmunu", "monkey");
+	// endUser.goNewVacation();
+	// inboxStep.clickInbox();
+	// assignedToOthers.clickAssignedToOthers();
+	// checkAll.clickCheckAll();
+	// approveAll.clickApproveAll();
+	// }
 	@Test
 	public void click_On_Employee_Link() {
 		endUser.loginSteps("evoportal.pmunu", "monkey");
 		endUser.goNewVacation();
+		// inboxStep.clickInbox();
+		// inboxStep.clickGoThrowPages();
+		// inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
+		// inboxStep.clickApproveRequest();
 		inboxStep.clickInbox();
-		inboxStep.clickGoThrowPages();
-//		inboxStep.clickOnAnEmployeeLink("dmUNU dmUNU");
-//		inboxStep.clickApproveRequest();
-
+		inboxStep.pageDropDownFilter();
+		inboxStep.selectDropDownValue();
+		inboxStep.clickCheckAll();
+		inboxStep.clickApproveAll();
 	}
 }
 // }

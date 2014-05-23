@@ -79,18 +79,27 @@ public class InboxSteps extends ScenarioSteps {
 	public void clickOnAnEmployeeLink(String employeeName) {
 		inboxPage.clickOnAnEmployeeLink(employeeName);
 	}
-	
+
 	@Step
-	public void clickApproveRequest(){
+	public void clickApproveRequest() {
 		inboxPage.click_approveRequest();
 	}
 
 	@Step
-	public void clickGoThrowPages(){
-		inboxPage.goThrowPages();
+	public void clickGoThrowPages() {
+		// inboxPage.goThrowPages();
 	}
-	
-	
+
+	@Step
+	public void pageDropDownFilter() {
+		inboxPage.click_PageDropDownFilter();
+	}
+
+	@Step
+	public void selectDropDownValue() {
+		inboxPage.click_SelectDropDownValue();
+	}
+
 	@StepGroup
 	public void loginSteps(String ScreenName, String Password) {
 		is_the_home_page();
@@ -101,9 +110,11 @@ public class InboxSteps extends ScenarioSteps {
 		goNewVacation();
 		verifyNewVacationPage();
 		clickInbox();
+		pageDropDownFilter();
+		selectDropDownValue();
 		// clickAssignedToOthers();
 		// clickCheckAll();
-		clickGoThrowPages();
-//		clickApproveRequest();
+		// clickGoThrowPages();
+		// clickApproveRequest();
 	}
 }

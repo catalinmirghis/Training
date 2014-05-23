@@ -30,6 +30,12 @@ public class InboxPage extends PageObject {
 	@FindBy(css = ".aui-button:nth-child(1).aui-button input")
 	private WebElementFacade ApproveRequest;
 
+	@FindBy(css = "select[class='aui-field-input aui-field-input-select aui-field-input-menu']")
+	private WebElementFacade pageDropDownFilter;
+
+	@FindBy(css = "select[class='aui-field-input aui-field-input-select aui-field-input-menu'] option[value='75']")
+	private WebElementFacade selectDropDownValue;
+
 	public void click_inbox() {
 		Inbox.click();
 	}
@@ -48,6 +54,16 @@ public class InboxPage extends PageObject {
 
 	}
 
+	public void click_PageDropDownFilter() {
+		pageDropDownFilter.click();
+
+	}
+
+	public void click_SelectDropDownValue() {
+		selectDropDownValue.click();
+
+	}
+
 	public void click_approveRequest() {
 		ApproveRequest.click();
 		ApproveRequest.click();
@@ -59,19 +75,19 @@ public class InboxPage extends PageObject {
 				.findElement(
 						By.cssSelector("div.page-links > span.aui-paginator-current-page-report.aui-paginator-total"))
 				.getText().trim();
-		
+
 		waitABit(3000);
 
 		int noOfPages = tools.StringUtils.getAllIntegerNumbersFromString(
 				noOfPagesContainer).get(1);
 		for (int i = 0; i < noOfPages; i++) {
-			if (i < noOfPages - 1 ) {
+			if (i < noOfPages - 1) {
 				getDriver()
 						.findElement(
 								By.cssSelector("div.page-links > a.aui-paginator-link.aui-paginator-next-link"))
 						.click();
-			
-		waitABit(3000);
+
+				waitABit(3000);
 			}
 		}
 	}
